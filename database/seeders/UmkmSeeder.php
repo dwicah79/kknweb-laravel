@@ -19,7 +19,7 @@ class UmkmSeeder extends Seeder
                 'telp' => $faker->phoneNumber,
                 'description' => $faker->text(500),
                 'address' => $faker->address,
-                'image' => $faker->imageUrl(),
+                'image' => 'https://picsum.photos/640/480',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
