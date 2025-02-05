@@ -12,5 +12,6 @@ route::get('/', [DashboardController::class, 'index']);
 
 Route::view('/dashboard', 'dashboard.index')->name('dashboard');
 // Route::view('/umkm', 'dashboard.umkm.index')->name('dashboard');
-Route::get('/umkm', [UmkmController::class, 'index']);
+Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
+Route::get('/umkm/create', [UmkmController::class, 'create'])->name('umkm.create');
 
