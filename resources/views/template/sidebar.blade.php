@@ -82,7 +82,7 @@
         class="fixed bg-white h-dvh md:w-[250px] rounded-xl shadow z-50 md:m-4 md:h-[calc(100vh-2rem)] flex flex-col justify-between transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full flex flex-col justify-center  px-3 bg-white py-5 rounded-lg pb-4 overflow-y-hidden  ">
-            <ul class="space-y-5 font-medium">
+            <ul class="space-y-7 font-medium">
                 <li>
                     <a href="#" class="flex ms-2">
                         <img src="{{ asset('image/43983.jpg') }}" class="w-10 rounded-full" alt="">
@@ -92,14 +92,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        class="flex items-center p-2 {{ Request::is('dashboard') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="/dashboard"
+                        class="flex items-center p-2 {{ Request::is('dashboard') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                        <i class="fa-solid fa-house"></i>
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        class="flex items-center p-2 {{ Request::is('tentangkami') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="{{ route('umkm.index') }}"
+                        class="flex items-center p-2 {{ in_array(Request::path(), ['umkm', 'umkm/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-shop"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Data UMKM</span>
 
@@ -107,7 +108,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('gallery') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('gallery') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-people-roof"></i>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Struktur Dusun</span>
@@ -116,7 +117,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('layanan') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('layanan') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-users-between-lines"></i>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Struktur Pemuda</span>
@@ -124,7 +125,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('client') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('client') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-people-line"></i>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Struktur PKK</span>
@@ -133,7 +134,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-inbox"></i>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Tentang Dusun</span>
@@ -142,7 +143,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('news') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('news') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-newspaper"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Berita</span>
 
@@ -150,7 +151,7 @@
                 </li>
                 <li>
                     <a href=""
-                        class="flex items-center p-2 {{ Request::is('feedback') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 {{ Request::is('feedback') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
