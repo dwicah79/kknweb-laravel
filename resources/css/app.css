@@ -1,4 +1,14 @@
+/* @import "flowbite"; */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+/* @import "flowbite"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "flowbite";
+
+@layer base {
+    .btn-primmary {
+        @apply px-4 py-2 text-sm text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700  dark:hover:text-white rounded-lg transition-all duration-300;
+    }
+}
