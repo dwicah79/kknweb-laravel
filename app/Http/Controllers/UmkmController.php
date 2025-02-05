@@ -12,4 +12,9 @@ class UmkmController extends Controller
         $data = Umkm::paginate(10);
         return view('dashboard.umkm.index', compact('data'));
     }
+
+    public function create()
+    {
+        return view('dashboard.umkm.create');
+    }
 }
