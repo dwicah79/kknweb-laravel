@@ -14,15 +14,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        try {
-            $credentials = $request->only('email', 'password');
-            if (Auth::attempt($credentials)) {
-                return redirect()->route('dashboard');
-            }
-        } catch (\Exception $e) {
-            return back()->withErrors(['email' => 'Email atau password salah']);
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard.index');
         }
+
+        return back()->withErrors(['email' => 'Email atau password salah']);
     }
+
 
     public function logout()
     {
