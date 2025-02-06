@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('asset/logotransparan.png') }}">
+    <link rel="shortcut icon" href="{{ asset('image/logo.jpg') }}" type="image/x-icon">
 
-    <title>Admin Kretek 1</title>
+    <title>Admin Kretek</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,7 +89,7 @@
                         <img src="{{ asset('image/logo.jpg') }}" class="w-10 rounded-full" alt="">
                         <span
                             class="self-center px-4 text-xl font-primary2 font-semibold sm:text-2xl whitespace-nowrap ">Kretek
-                            1</span>
+                            Village</span>
                     </a>
                 </li>
                 <li>

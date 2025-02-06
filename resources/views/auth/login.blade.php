@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ asset('img/logo-ec.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('image/logo.jpg') }}" type="image/x-icon">
 
     <title>{{ $title ?? config('app.name') }}</title>
 
@@ -15,7 +15,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="px-4 bg-gray-100">
+<body class="px-4 bg-green-50 ">
     <div class="relative -z-10">
         <div class="fixed">
             <div class="fixed -top-48 -left-48 w-[500px] h-[500px] rounded-full"
@@ -45,11 +45,12 @@
                                     {{ config('app.name') }}
                                 </div>
                             </div>
-                            <span class="hidden md:flex text-center text-xs mt-2">Selamat datang di website manajemen
+                            <h1 class="hidden md:flex text-center  mt-2">Selamat datang di
+                                website manajemen
                                 dusun
                                 kretek,
                                 warnai dusun
-                                kami dengan update kegiatan dusun ❤️</span>
+                                kami dengan update kegiatan dusun ❤️</h1>
                             <div class="mt-3">
                                 <x-alert type="error" />
                             </div>
@@ -61,7 +62,7 @@
                 </form>
             </div>
             <div class="md:w-3/6 hidden md:block xl:p-5 overflow-hidden rounded-xl">
-                <img src="{{ asset('image/village1.jpg') }}"
+                <img src="{{ asset('image/people.png') }}"
                     class="h-full w-full object-cover overflow-hidden rounded-xl" />
             </div>
         </div>
