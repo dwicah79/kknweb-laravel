@@ -11,6 +11,10 @@
     .btn-primmary {
         @apply px-4 py-2 text-sm text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700  dark:hover:text-white rounded-lg transition-all duration-300;
     }
+
+    .bg-gradient-primmary {
+        @apply bg-gradient-to-r from-green-500 to-green-600;
+    }
 }
 
 @layer utilities {
