@@ -64,6 +64,52 @@ class UmkmController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        $umkm = Umkm::findOrFail($id);
+        return view('dashboard.umkm.detail', compact('umkm'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'telp' => 'required|numeric',
+            'description' => 'required',
+            'address' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048 | nullable',
+        ]);
+
+        try {
+            $umkm = Umkm::findOrFail($id);
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                Log::info('File ditemukan: ' . $file->getClientOriginalName());
+
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads'), $fileName); // Simpan ke public/uploads
+
+                $imagePath = 'uploads/' . $fileName; // Simpan path tanpa "public/"
+            } else {
+                $imagePath = $umkm->image;
+            }
+
+            $umkm->update([
+                'name' => $request->name,
+                'telp' => $request->telp,
+                'description' => $request->description,
+                'address' => $request->address,
+                'image' => $imagePath,
+            ]);
+
+            return redirect()->route('umkm.index')->with('success', 'Data berhasil diubah');
+        } catch (\Exception $e) {
+            Log::error('Error updating UMKM: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Data gagal diubah');
+        }
+    }
+
     public function destroy($id)
     {
         try {
