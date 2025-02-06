@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('asset/logotransparan.png') }}">
 
     <title>Admin Kretek 1</title>
@@ -15,7 +16,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- @vite('resources/js/app.js') --}}
-    <script src="{{ asset('js/index.js') }}"></script>
+    {{-- <script src="{{ asset('js/index.js') }}"></script> --}}
 
     {{-- chart  --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -85,7 +86,7 @@
             <ul class="space-y-7 font-medium">
                 <li>
                     <a href="#" class="flex ms-2">
-                        <img src="{{ asset('image/43983.jpg') }}" class="w-10 rounded-full" alt="">
+                        <img src="{{ asset('image/logo.jpg') }}" class="w-10 rounded-full" alt="">
                         <span
                             class="self-center px-4 text-xl font-primary2 font-semibold sm:text-2xl whitespace-nowrap ">Kretek
                             1</span>
@@ -163,10 +164,14 @@
                 </li>
             </ul>
         </div>
+        {{-- <div class="px-3 py-3 flex flex-col">
+            <span>{{ Auth::user()->name }}</span>
+            <span>{{ Auth::user()->rolesuser->first()->name }}</span>
+        </div> --}}
         <div class="px-3 py-3 bg-white mb-10 flex justify-center ">
-            <a href=""
-                class="items-center space-x-2 gap-2 px-4 py-2 text-sm inline-flex text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700  dark:hover:bg-gray-600 dark:hover:text-white rounded-lg transition duration-300"
-                role="menuitem">
+            <a href="javascript:void(0);"
+                class="items-center space-x-2 gap-2 px-4 py-2 text-sm inline-flex text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg transition duration-300"
+                role="menuitem" id="logoutBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
@@ -193,6 +198,27 @@
             </footer>
         </div>
     </div>
+
+    <!-- Add this in your <head> section -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, logout',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '{{ route('logout') }}';
+                }
+            });
+        });
+    </script>
+
 
 </body>
 
