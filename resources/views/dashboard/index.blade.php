@@ -5,7 +5,7 @@
             class="card bg-gradient-to-tr mt-5 from-green-600 md:p-10 to-green-200 mb-10 flex justify-between items-center rounded-lg relative">
             <div class="md:py-10 md:px-8 px-4 py-10 z-20">
                 <div class="md:text-3xl text-xl md:flex font-bold text-white">
-                    Selamat Datang
+                    Selamat Datang {{ Auth::user()->name }}
                     <div class="md:ms-2 md:w-[400px] w-[180px]">
                         <p class="font-normal truncate"> </p>
                     </div>
