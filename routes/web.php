@@ -15,3 +15,5 @@ Route::view('/dashboard', 'dashboard.index')->name('dashboard');
 Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
 Route::get('/umkm/create', [UmkmController::class, 'create'])->name('umkm.create');
 
+
+Route::view('/login', 'auth.login')->name('login');
