@@ -10,7 +10,7 @@
 
     <div class="bg-white shadow-md sm:rounded-lg overflow-hidden p-6">
         <div class="w-full flex justify-end ">
-            <div class="w-1/2">
+            <div class="w-full md:w-1/2">
                 <form class="flex items-center justify-end">
                     <label for="voice-search" class="sr-only">Cari</label>
                     <div class="relative w-full">
