@@ -30,7 +30,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="flex md:w-4/6 w-full bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="md:w-3/6 w-full">
-                <form action="" method="post">
+                <form action="{{ route('login.post') }}" method="post">
                     @csrf
                     <div class="w-full md:px-20 px-5 py-5 xl:py-16">
                         <div class="md:hidden xl:p-5 overflow-hidden rounded-xl mb-5">
@@ -38,7 +38,7 @@
                                 class="h-24 w-full object-cover overflow-hidden rounded-xl" />
                         </div>
                         <div class="mb-3 flex flex-wrap items-center justify-center md:justify-center space-x-3">
-                            <img src="{{ asset('image/43983.jpg') }}" class="h-5 xl:h-8" alt="Flowbite Logo">
+                            <img src="{{ asset('image/logo.jpg') }}" class="h-5 xl:h-10" alt="Flowbite Logo">
                             <div class="">
                                 <div
                                     class="self-center text-slate-600 text-xl xl:text-3xl font-extrabold whitespace-nowrap">
@@ -50,6 +50,9 @@
                                 kretek,
                                 warnai dusun
                                 kami dengan update kegiatan dusun ❤️</span>
+                            <div class="mt-3">
+                                <x-alert type="error" />
+                            </div>
                         </div>
                         <x-input name="email" type="email" label="Email" required />
                         <x-input name="password" type="password" label="Password" required />
