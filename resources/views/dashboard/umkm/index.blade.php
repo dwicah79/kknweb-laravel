@@ -1,7 +1,7 @@
 @extends('template.sidebar')
 @section('konten')
     <x-breadcrumb :links="[['name' => 'DASHBOARD', 'url' => route('dashboard')], ['name' => 'UMKM', 'url' => '#']]" />
-    <div class="w-full flex justify-between items-center bg-green-500 px-5 py-5 mb-2">
+    <div class="w-full flex justify-between items-center bg-gradient-primmary px-5 py-5 mb-2">
         <h1 class="font-extrabold uppercase text-white text-xl">Data UMKM</h1>
         <a href="{{ route('umkm.create') }}" class="bg-white rounded-lg w-fit whitespace-nowrap p-2 hover:bg-slate-100"><i
                 class="fa-solid fa-plus"></i>
