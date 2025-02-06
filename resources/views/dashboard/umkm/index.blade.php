@@ -1,6 +1,6 @@
 @extends('template.sidebar')
 @section('konten')
-    <x-breadcrumb :links="[['name' => 'DASHBOARD', 'url' => route('dashboard')], ['name' => 'UMKM', 'url' => '#']]" />
+    <x-breadcrumb :links="[['name' => 'DASHBOARD', 'url' => route('dashboard.index')], ['name' => 'UMKM', 'url' => '#']]" />
     <div class="w-full flex justify-between items-center bg-gradient-primmary px-5 py-5 mb-2">
         <h1 class="font-extrabold uppercase text-white text-xl">Data UMKM</h1>
         <a href="{{ route('umkm.create') }}" class="bg-white rounded-lg w-fit whitespace-nowrap p-2 hover:bg-slate-100"><i
@@ -30,12 +30,16 @@
             </div>
         </div>
         <div class="overflow-x-auto mt-5">
+            <x-alert type="error"></x-alert>
+            {{-- <x-alert type="success"></x-alert> --}}
             <table class="w-full bg-gray-50 border border-gray-200 divide-y divide-gray-300 rounded-lg">
                 <thead class="bg-blue-50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">#</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Nama UMKM</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Gambar</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Deskripsi</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Alamat</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Tanggal Dibuat</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Terakhir Diubah</th>
                         <th class="px-4 py-3 text-center text-xs font-semibold text-gray-700">Aksi</th>
@@ -46,12 +50,15 @@
                         <tr class="bg-white hover:bg-gray-100">
                             <td class="px-4 py-4 text-sm text-gray-800">
                                 {{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
+                            <td class="px-4 py-4 text-sm text-gray-800">{{ $item->name }}</td>
                             <td class="px-4 py-4">
-                                <img src="{{ $item->image }}" alt="Gambar"
+                                <img src="{{ asset($item->image) }}" alt="Gambar"
                                     class="w-16 h-16 object-cover rounded-md border border-gray-300 shadow-sm">
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-800 truncate max-w-xs">
-                                {{ Str::limit($item->description, 50, '...') }}</td>
+                                {!! Str::limit($item->description, 50, '...') !!}</td>
+                            <td class="px-4 py-4 text-sm text-gray-800">
+                                {{ $item->address }}</td>
                             <td class="px-4 py-4 text-sm text-gray-800">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                             <td class="px-4 py-4 text-sm text-gray-800">
@@ -62,10 +69,12 @@
                                         <i class="fa-solid fa-eye"></i>
                                         </svg>
                                     </a>
-                                    <form action="" method="POST" class="inline">
+                                    <form id="delete-form-{{ $item->id }}"
+                                        action="{{ route('umkm.destroy', $item->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-300 hover:text-red-500">
+                                        <button type="button" class="text-red-300 hover:text-red-500 delete-button"
+                                            data-id="{{ $item->id }}">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
@@ -80,4 +89,29 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    let itemId = this.getAttribute('data-id');
+                    Swal.fire({
+                        title: "Apakah Anda yakin?",
+                        text: "Data yang dihapus tidak bisa dikembalikan!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Ya, hapus!",
+                        cancelButtonText: "Batal"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('delete-form-' + itemId).submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @endsection
