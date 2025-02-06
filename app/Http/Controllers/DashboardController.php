@@ -12,15 +12,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data = [
-            'UMKM' => Umkm::paginate(5),
-            'PKK' => PKK_Organization::with('village')->paginate(10),
-            'Pemuda' => Youth_Organization::with('village')->paginate(10),
-            'Dusun' => Village_organization::with('village')->paginate(10),
-        ];
 
-        return $data;
 
-        // return view('dashboard.index');
+        return view('dashboard.index');
     }
 }
