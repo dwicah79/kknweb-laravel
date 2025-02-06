@@ -83,7 +83,7 @@
         class="fixed bg-white h-dvh md:w-[250px] rounded-xl shadow z-50 md:m-4 md:h-[calc(100vh-2rem)] flex flex-col justify-between transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full flex flex-col justify-center  px-3 bg-white py-5 rounded-lg pb-4 overflow-y-hidden  ">
-            <ul class="space-y-7 font-medium">
+            <ul class="space-y-5 md:space-y-7 font-medium">
                 <li>
                     <a href="#" class="flex ms-2">
                         <img src="{{ asset('image/logo.jpg') }}" class="w-10 rounded-full" alt="">
