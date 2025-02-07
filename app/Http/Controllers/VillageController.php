@@ -56,4 +56,54 @@ class VillageController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    public function edit($id)
+    {
+        $data = Village_organization::find($id);
+        $position = Position::all();
+        return view('dashboard.village-organization.detile', compact('data', 'position'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'position' => 'required|exists:positions,id',
+            'telp' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        try {
+            $data = Village_organization::find($id);
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads'), $fileName);
+
+                $imagePath = 'uploads/' . $fileName;
+            } else {
+                $imagePath = $data->image;
+            }
+
+            $data->update([
+                'name' => $request->name,
+                'telp' => $request->telp,
+                'job_title_id' => $request->position,
+                'image' => $imagePath,
+            ]);
+
+            return redirect()->route('village.index')->with('success', 'Data berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function destroy($id)
+    {
+        $data = Village_organization::find($id);
+        $data->delete();
+
+        return redirect()->route('village.index')->with('success', 'Data berhasil dihapus');
+    }
 }
