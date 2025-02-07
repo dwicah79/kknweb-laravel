@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="bg-blue-50">
+<body class="bg-slate-200">
     {{-- <div class="relative -z-10">
         <div class="fixed">
             <div class="fixed -top-48 -left-48 w-[500px] h-[500px] rounded-full"
@@ -117,8 +117,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        class="flex items-center p-2 {{ Request::is('layanan') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                    <a href="{{ route('youth-organization.index') }}"
+                        class="flex items-center p-2 {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                         <i class="fa-solid fa-users-between-lines"></i>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Struktur Pemuda</span>
