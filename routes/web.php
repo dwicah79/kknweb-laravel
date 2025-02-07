@@ -25,6 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/village-organization', [VillageController::class, 'index'])->name('village.index');
     Route::get('/village-organization/create', [VillageController::class, 'create'])->name('village.create');
     Route::post('/village-organization/create', [VillageController::class, 'store'])->name('village.store');
+    Route::get('/village-organization/{id}/edit', [VillageController::class, 'edit'])->name('village.edit');
+    Route::put('/village-organization/{id}', [VillageController::class, 'update'])->name('village.update');
+    Route::delete('/village-organization/{id}', [VillageController::class, 'destroy'])->name('village.destroy');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
