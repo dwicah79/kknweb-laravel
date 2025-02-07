@@ -7,6 +7,7 @@ use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VillageController;
+use App\Http\Controllers\YouthorganizationController;
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -28,6 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/village-organization/{id}/edit', [VillageController::class, 'edit'])->name('village.edit');
     Route::put('/village-organization/{id}', [VillageController::class, 'update'])->name('village.update');
     Route::delete('/village-organization/{id}', [VillageController::class, 'destroy'])->name('village.destroy');
+    Route::get('/youth-organization', [YouthorganizationController::class, 'index'])->name('youth-organization.index');
+    Route::get('/youth-organization/create', [YouthorganizationController::class, 'create'])->name('youth-organization.create');
+    Route::post('/youth-organization/create', [YouthorganizationController::class, 'store'])->name('youth-organization.store');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
