@@ -15,7 +15,7 @@ class Position extends Model
 
     public function village()
     {
-        return $this->belongsTo(Village_organization::class, 'job_title_id');
+        return $this->hasMany(Village_organization::class, 'job_title_id');
     }
 
     public function youth()
