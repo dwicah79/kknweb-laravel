@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VillageController;
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -20,6 +21,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/umkm/{id}', [UmkmController::class, 'destroy'])->name('umkm.destroy');
     Route::get('/umkm/{id}/edit', [UmkmController::class, 'edit'])->name('umkm.edit');
     Route::put('/umkm/{id}', [UmkmController::class, 'update'])->name('umkm.update');
+
+    Route::get('/village-organization', [VillageController::class, 'index'])->name('village.index');
+    Route::get('/village-organization/create', [VillageController::class, 'create'])->name('village.create');
+    Route::post('/village-organization/create', [VillageController::class, 'store'])->name('village.store');
+    Route::get('/village-organization/{id}/edit', [VillageController::class, 'edit'])->name('village.edit');
+    Route::put('/village-organization/{id}', [VillageController::class, 'update'])->name('village.update');
+    Route::delete('/village-organization/{id}', [VillageController::class, 'destroy'])->name('village.destroy');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
