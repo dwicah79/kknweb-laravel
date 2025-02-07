@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/umkm/{id}', [UmkmController::class, 'update'])->name('umkm.update');
 
     Route::get('/village-organization', [VillageController::class, 'index'])->name('village.index');
+    Route::get('/village-organization/create', [VillageController::class, 'create'])->name('village.create');
+    Route::post('/village-organization/create', [VillageController::class, 'store'])->name('village.store');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
