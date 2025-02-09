@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/youth-organization', [YouthorganizationController::class, 'index'])->name('youth-organization.index');
     Route::get('/youth-organization/create', [YouthorganizationController::class, 'create'])->name('youth-organization.create');
     Route::post('/youth-organization/create', [YouthorganizationController::class, 'store'])->name('youth-organization.store');
+    Route::get('/youth-organization/{id}/edit', [YouthorganizationController::class, 'edit'])->name('youth-organization.edit');
+    Route::put('/youth-organization/{id}', [YouthorganizationController::class, 'update'])->name('youth-organization.update');
+    Route::delete('/youth-organization/{id}', [YouthorganizationController::class, 'destroy'])->name('youth-organization.destroy');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
