@@ -2,11 +2,12 @@
 
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PKKController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UmkmController;
+use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\VillageController;
 use App\Http\Controllers\YouthorganizationController;
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
@@ -35,6 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/youth-organization/{id}/edit', [YouthorganizationController::class, 'edit'])->name('youth-organization.edit');
     Route::put('/youth-organization/{id}', [YouthorganizationController::class, 'update'])->name('youth-organization.update');
     Route::delete('/youth-organization/{id}', [YouthorganizationController::class, 'destroy'])->name('youth-organization.destroy');
+
+
+    Route::get('/PKK-organization', [PKKController::class, 'index'])->name('pkk.index');
+    Route::get('/PKK-organization/create', [PKKController::class, 'create'])->name('pkk.create');
+    Route::post('/PKK-organization/create', [PKKController::class, 'store'])->name('pkk.store');
+    Route::get('/PKK-organization/{id}/edit', [PKKController::class, 'edit'])->name('pkk.edit');
+    Route::put('/PKK-organization/{id}', [PKKController::class, 'update'])->name('pkk.update');
+    Route::delete('/PKK-organization/{id}', [PKKController::class, 'destroy'])->name('pkk.destroy');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
