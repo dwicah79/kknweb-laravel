@@ -63,13 +63,14 @@
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                             <td class="px-4 py-4 text-center">
                                 <div class="flex justify-center space-x-2">
-                                    <a href="{{ route('village.edit', $item->id) }}"
+                                    <a href="{{ route('youth-organization.edit', $item->id) }}"
                                         class="text-blue-300 hover:text-blue-400">
                                         <i class="fa-solid fa-eye"></i>
                                         </svg>
                                     </a>
                                     <form id="delete-form-{{ $item->id }}"
-                                        action="{{ route('village.destroy', $item->id) }}" method="POST" class="inline">
+                                        action="{{ route('youth-organization.destroy', $item->id) }}" method="POST"
+                                        class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="text-red-300 hover:text-red-500 delete-button"
