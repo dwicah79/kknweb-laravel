@@ -20,7 +20,7 @@ class Position extends Model
 
     public function youth()
     {
-        return $this->belongsTo(Youth_Organization::class, 'job_title_id');
+        return $this->hasMany(Village_organization::class, 'job_title_id');
     }
 
     public function pkk()
