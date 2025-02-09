@@ -15,6 +15,6 @@ class PKK_Organization extends Model
 
     public function village()
     {
-        return $this->hasOne(Position::class, 'id');
+        return $this->belongsTo(Position::class, 'job_title_id');
     }
 }
