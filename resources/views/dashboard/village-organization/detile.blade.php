@@ -3,7 +3,7 @@
     <x-breadcrumb :links="[
         ['name' => 'DASHBOARD', 'url' => route('dashboard.index')],
         ['name' => 'UMKM', 'url' => route('umkm.index')],
-        ['name' => 'TAMBAH DATA UMKM', 'url' => '#'],
+        ['name' => 'EDIT DATA STRUKTUR DUSUN', 'url' => '#'],
     ]" />
 
     <div class="rounded-lg bg-white p-10">
