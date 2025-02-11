@@ -4,6 +4,7 @@ use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PKKController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
@@ -44,6 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/PKK-organization/{id}/edit', [PKKController::class, 'edit'])->name('pkk.edit');
     Route::put('/PKK-organization/{id}', [PKKController::class, 'update'])->name('pkk.update');
     Route::delete('/PKK-organization/{id}', [PKKController::class, 'destroy'])->name('pkk.destroy');
+
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+    Route::post('/news/create', [NewsController::class, 'store'])->name('news.store');
+    Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+    Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
+    Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+
+
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
