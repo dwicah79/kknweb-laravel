@@ -6,6 +6,7 @@ use App\Http\Controllers\PKKController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UmkmController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
@@ -53,7 +54,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
     Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
 
-
+    Route::get('/user-management', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user-management/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user-management/create', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user-management/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user-management/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user-management/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
