@@ -15,6 +15,21 @@
     .bg-gradient-primmary {
         @apply bg-gradient-to-r from-green-500 to-green-600;
     }
+    .badge-red {
+        @apply bg-red-200 text-red-500 text-xs px-2 py-1 rounded-md;
+    }
+    .badge-green {
+        @apply bg-green-200 text-green-500 text-xs px-2 py-1 rounded-md;
+    }
+    .badge-blue {
+        @apply bg-blue-200 text-blue-500 text-xs px-2 py-1 rounded-md;
+    }
+    .badge-yellow {
+        @apply bg-yellow-200 text-yellow-500 text-xs px-2 py-1 rounded-md;
+    }
+    .badge-purple {
+        @apply bg-purple-200 text-purple-500 text-xs px-2 py-1 rounded-md;
+    }
 }
 
 @layer utilities {
