@@ -99,14 +99,16 @@
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('umkm.index') }}"
-                        class="flex items-center p-2 {{ in_array(Request::path(), ['umkm', 'umkm/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                        <i class="fa-solid fa-shop"></i>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Data UMKM</span>
-
-                    </a>
-                </li>
+                @if (Auth::user()->rolesuser->first()->name == 'Pengurus-UMKM' ||
+                        Auth::user()->rolesuser->first()->name == 'Super-Admin')
+                    <li>
+                        <a href="{{ route('umkm.index') }}"
+                            class="flex items-center p-2 {{ in_array(Request::path(), ['umkm', 'umkm/create', 'umkm/' . request()->segment(2) . '/edit']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            <i class="fa-solid fa-store"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Data UMKM</span>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="{{ route('village.index') }}"
                         class="flex items-center p-2 {{ in_array(Request::path(), ['village-organization', 'village-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
@@ -186,7 +188,7 @@
     <div class="p-4 md:ml-[260px] h-max">
         <div class="mt-20 md:mt-0">
             @yield('konten')
-            {{-- @include('sweetalert::alert') --}}
+            @include('sweetalert::alert')
 
 
             <footer class="bg-white  text-black py-3 rounded-lg mt-10">
