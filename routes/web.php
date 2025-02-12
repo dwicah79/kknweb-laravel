@@ -18,14 +18,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], funct
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
-    Route::get('/umkm/create', [UmkmController::class, 'create'])->name('umkm.create');
-    Route::post('/umkm/create', [UmkmController::class, 'store'])->name('umkm.store');
-    // Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
-    Route::delete('/umkm/{id}', [UmkmController::class, 'destroy'])->name('umkm.destroy');
-    Route::get('/umkm/{id}/edit', [UmkmController::class, 'edit'])->name('umkm.edit');
-    Route::put('/umkm/{id}', [UmkmController::class, 'update'])->name('umkm.update');
-
     Route::get('/village-organization', [VillageController::class, 'index'])->name('village.index');
     Route::get('/village-organization/create', [VillageController::class, 'create'])->name('village.create');
     Route::post('/village-organization/create', [VillageController::class, 'store'])->name('village.store');
@@ -64,6 +56,16 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'role:Pengurus-UMKM|Super-Admin'])->group(function () {
+    Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
+    Route::get('/umkm/create', [UmkmController::class, 'create'])->name('umkm.create');
+    Route::post('/umkm/create', [UmkmController::class, 'store'])->name('umkm.store');
+    // Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    Route::delete('/umkm/{id}', [UmkmController::class, 'destroy'])->name('umkm.destroy');
+    Route::get('/umkm/{id}/edit', [UmkmController::class, 'edit'])->name('umkm.edit');
+    Route::put('/umkm/{id}', [UmkmController::class, 'update'])->name('umkm.update');
+});
 
 
 
