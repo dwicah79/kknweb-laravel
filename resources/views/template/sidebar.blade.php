@@ -119,32 +119,41 @@
                         </a>
                     </li>
                 @endif
-                <li>
-                    <a href="{{ route('youth-organization.index') }}"
-                        class="flex items-center p-2 {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                        <i class="fa-solid fa-users-between-lines"></i>
+                @if (Auth::user()->rolesuser->first()->name == 'Pengurus-Pemuda' ||
+                        Auth::user()->rolesuser->first()->name == 'Super-Admin')
+                    <li>
+                        <a href="{{ route('youth-organization.index') }}"
+                            class="flex items-center p-2 {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            <i class="fa-solid fa-users-between-lines"></i>
 
-                        <span class="flex-1 ms-3 whitespace-nowrap">Struktur Pemuda</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('pkk.index') }}"
-                        class="flex items-center p-2 {{ in_array(Request::path(), ['PKK-organization', 'PKK-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                        <i class="fa-solid fa-people-line"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Struktur Pemuda</span>
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->rolesuser->first()->name == 'Pengurus-PKK' || Auth::user()->rolesuser->first()->name == 'Super-Admin')
+                    <li>
+                        <a href="{{ route('pkk.index') }}"
+                            class="flex items-center p-2 {{ in_array(Request::path(), ['PKK-organization', 'PKK-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            <i class="fa-solid fa-people-line"></i>
 
-                        <span class="flex-1 ms-3 whitespace-nowrap">Struktur PKK</span>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Struktur PKK</span>
 
-                    </a>
-                </li>
-                <li>
-                    <a href=""
-                        class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                        <i class="fa-solid fa-inbox"></i>
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->rolesuser->first()->name == 'Pengurus-Pemuda' ||
+                        Auth::user()->rolesuser->first()->name == 'Super-Admin' ||
+                        Auth::user()->rolesuser->first()->name == 'Pengurus-Desa')
+                    <li>
+                        <a href=""
+                            class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            <i class="fa-solid fa-inbox"></i>
 
-                        <span class="flex-1 ms-3 whitespace-nowrap">Tentang Dusun</span>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Tentang Dusun</span>
 
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="{{ route('news.index') }}"
                         class="flex items-center p-2 {{ in_array(Request::path(), ['news', 'news/create', 'news/' . request()->segment(2) . '/edit']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
