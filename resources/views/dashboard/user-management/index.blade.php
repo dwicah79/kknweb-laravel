@@ -62,8 +62,8 @@
                                     <span class="badge-blue">Pengurus Pemuda</span>
                                 @elseif ($item->roles->first()?->name == 'Pengurus-PKK')
                                     <span class="badge-yellow">Pengurus PKK</span>
-                                @elseif ($item->roles->first()?->name == 'Pengurus-TPA')
-                                    <span class="badge-purple">Pengurus TPA</span>
+                                @elseif ($item->roles->first()?->name == 'Pengurus-UMKM')
+                                    <span class="badge-purple">Pengurus UMKM</span>
                                 @endif
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-800">
