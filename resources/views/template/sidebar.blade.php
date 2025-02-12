@@ -109,15 +109,16 @@
                         </a>
                     </li>
                 @endif
-                <li>
-                    <a href="{{ route('village.index') }}"
-                        class="flex items-center p-2 {{ in_array(Request::path(), ['village-organization', 'village-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                        <i class="fa-solid fa-people-roof"></i>
-
-                        <span class="flex-1 ms-3 whitespace-nowrap">Struktur Dusun</span>
-
-                    </a>
-                </li>
+                @if (Auth::user()->rolesuser->first()->name == 'Pengurus-Desa' ||
+                        Auth::user()->rolesuser->first()->name == 'Super-Admin')
+                    <li>
+                        <a href="{{ route('village.index') }}"
+                            class="flex items-center p-2 {{ in_array(Request::path(), ['village-organization', 'village-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            <i class="fa-solid fa-people-roof"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Struktur Dusun</span>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="{{ route('youth-organization.index') }}"
                         class="flex items-center p-2 {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
