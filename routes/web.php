@@ -18,12 +18,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], funct
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/village-organization', [VillageController::class, 'index'])->name('village.index');
-    Route::get('/village-organization/create', [VillageController::class, 'create'])->name('village.create');
-    Route::post('/village-organization/create', [VillageController::class, 'store'])->name('village.store');
-    Route::get('/village-organization/{id}/edit', [VillageController::class, 'edit'])->name('village.edit');
-    Route::put('/village-organization/{id}', [VillageController::class, 'update'])->name('village.update');
-    Route::delete('/village-organization/{id}', [VillageController::class, 'destroy'])->name('village.destroy');
     Route::get('/youth-organization', [YouthorganizationController::class, 'index'])->name('youth-organization.index');
     Route::get('/youth-organization/create', [YouthorganizationController::class, 'create'])->name('youth-organization.create');
     Route::post('/youth-organization/create', [YouthorganizationController::class, 'store'])->name('youth-organization.store');
@@ -65,6 +59,15 @@ Route::middleware(['auth', 'role:Pengurus-UMKM|Super-Admin'])->group(function ()
     Route::delete('/umkm/{id}', [UmkmController::class, 'destroy'])->name('umkm.destroy');
     Route::get('/umkm/{id}/edit', [UmkmController::class, 'edit'])->name('umkm.edit');
     Route::put('/umkm/{id}', [UmkmController::class, 'update'])->name('umkm.update');
+});
+
+Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa'])->group(function () {
+    Route::get('/village', [VillageController::class, 'index'])->name('village.index');
+    Route::get('/village/create', [VillageController::class, 'create'])->name('village.create');
+    Route::post('/village/create', [VillageController::class, 'store'])->name('village.store');
+    Route::get('/village/{id}/edit', [VillageController::class, 'edit'])->name('village.edit');
+    Route::put('/village/{id}', [VillageController::class, 'update'])->name('village.update');
+    Route::delete('/village/{id}', [VillageController::class, 'destroy'])->name('village.destroy');
 });
 
 
