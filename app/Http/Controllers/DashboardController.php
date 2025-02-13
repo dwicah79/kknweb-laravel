@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Ambil data berita per bulan
-        $newsPerMonth = News::selectRaw('MONTH(created_at) as month, COUNT(*) as total')
+        $newsPerMonth = News::selectRaw('MONTH(add_date) as month, COUNT(*) as total')
             ->groupBy('month')
             ->orderBy('month')
             ->get();
@@ -44,11 +44,13 @@ class DashboardController extends Controller
             $data[$news->month - 1] = $news->total;
         }
 
+        $latest_news = News::orderBy('add_date', 'desc')->limit(5)->paginate(5);
+
         return view('dashboard.index', [
             'total_berita' => News::count(),
             'total_umkm' => Umkm::count(),
             'total_pengguna' => User::count(),
-            'berita' => News::latest()->paginate(5),
+            'berita' => $latest_news,
             'labels' => $labels,
             'data' => $data,
         ]);
