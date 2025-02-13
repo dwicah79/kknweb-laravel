@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutusController;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PKKController;
@@ -72,6 +73,15 @@ Route::middleware(['auth', 'role:Super-Admin'])->group(function () {
     Route::get('/user-management/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/user-management/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user-management/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+});
+
+Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengurus-PKK'])->group(function () {
+    Route::get('/about-website', [AboutusController::class, 'index'])->name('about.index');
+    Route::get('/about-website/create-slider', [AboutusController::class, 'createslider'])->name('about.slider.create');
+    Route::post('/about-website/create-slider', [AboutusController::class, 'sliderstore'])->name('about.slider.store');
+    Route::get('/about-website/{id}/edit-slider', [AboutusController::class, 'editslider'])->name('about.slider.edit');
+    Route::put('/about-website/{id}/edit-slider', [AboutusController::class, 'updateslider'])->name('about.slider.update');
+    Route::delete('/about-website/{id}', [AboutusController::class, 'destroyslider'])->name('about.slider.destroy');
 });
 
 

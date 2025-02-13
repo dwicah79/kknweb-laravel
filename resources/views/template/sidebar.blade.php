@@ -145,12 +145,10 @@
                         Auth::user()->rolesuser->first()->name == 'Super-Admin' ||
                         Auth::user()->rolesuser->first()->name == 'Pengurus-Desa')
                     <li>
-                        <a href=""
+                        <a href="{{ route('about.index') }}"
                             class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
                             <i class="fa-solid fa-inbox"></i>
-
-                            <span class="flex-1 ms-3 whitespace-nowrap">Tentang Dusun</span>
-
+                            <span class="flex-1 ms-3 whitespace-nowrap">Manajemen Website</span>
                         </a>
                     </li>
                 @endif
@@ -178,10 +176,6 @@
                 @endif
             </ul>
         </div>
-        {{-- <div class="px-3 py-3 flex flex-col">
-            <span>{{ Auth::user()->name }}</span>
-            <span>{{ Auth::user()->rolesuser->first()->name }}</span>
-        </div> --}}
         <div class="px-3 py-3 bg-white mb-10 flex justify-center ">
             <a href="javascript:void(0);"
                 class="items-center space-x-2 gap-2 px-4 py-2 text-sm inline-flex text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg transition duration-300"
