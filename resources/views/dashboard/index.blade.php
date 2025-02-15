@@ -3,7 +3,7 @@
 @section('konten')
     <header>
         <div
-            class="card bg-gradient-to-r from-green-500 to-green-300 mt-5 p-8 rounded-xl shadow-lg flex justify-between items-center relative overflow-hidden">
+            class="card bg-gradient-to-r from-primary-500 to-primary-300 mt-5 p-8 rounded-xl shadow-lg flex justify-between items-center relative overflow-hidden">
             <div>
                 <h1 class="text-2xl md:text-4xl font-bold text-white">Selamat Datang, {{ Auth::user()->name }} 🎉</h1>
                 <p class="text-white mt-2">Kelola informasi desa dengan mudah dan cepat.</p>
