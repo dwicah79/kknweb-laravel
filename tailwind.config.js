@@ -14,10 +14,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                // sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                playfair: ["Playfair Display", "serif"],
-                primary2: ["Bebas Neue", "sans-serif"],
-                jakartasans: ["Jakarta Sans", ...defaultTheme.fontFamily.sans],
+                sans: ["Jakarta Sans", ...defaultTheme.fontFamily.sans],
             },
             fontWeight: {
                 light: 300,
