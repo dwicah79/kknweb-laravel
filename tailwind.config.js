@@ -14,7 +14,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Jakarta Sans", ...defaultTheme.fontFamily.sans],
+                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
             fontWeight: {
                 light: 300,
@@ -22,6 +22,19 @@ export default {
                 medium: 500,
                 semibold: 600,
                 bold: 700,
+            },
+            colors: {
+                primary: {
+                    100: "#E6F6FF",
+                    200: "#BFE8FF",
+                    300: "#99DBFF",
+                    400: "#4DC0FF",
+                    500: "#00A5FF",
+                    600: "#0096E6",
+                    700: "#006399",
+                    800: "#004D73",
+                    900: "#00364D",
+                },
             },
         },
     },
