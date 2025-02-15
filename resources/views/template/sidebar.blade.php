@@ -35,29 +35,19 @@
 
 </head>
 
-<body class="bg-slate-200">
-    {{-- <div class="relative -z-10">
-        <div class="fixed">
-            <div class="fixed -top-48 -left-48 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(15, 245, 161, 0.474) 0%, rgba(59,130,246,0) 70%);">
-            </div>
-            <div class="fixed -bottom-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full"
-                style="background: radial-gradient(circle, rgba(0, 226, 64, 0.474) 0%, rgba(59,130,246,0) 70%);">
-            </div>
-            <div class="fixed -bottom-48 -right-0 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(0, 255, 221, 0.507) 0%, rgba(59,130,246,0) 70%);"></div>
-        </div>
-    </div> --}}
-
+<body class="bg-primary-100">
     <div class="relative -z-10">
         <div class="fixed">
-            <div class="fixed -top-48 -left-48 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(15, 245, 161, 0.474) 0%, rgba(59,130,246,0) 70%);">
+            <div class="fixed -top-48 -left-48 w-[300px] h-[300px] rounded-full"
+                style="background: radial-gradient(circle, rgba(24, 138, 204, 0.474) 0%, rgba(59,130,246,0) 70%);">
             </div>
-            <div class="fixed -bottom-48 -right-48 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(0, 226, 64, 0.474)  0%, rgba(59,130,246,0) 70%);"></div>
+            <div class="fixed -bottom-48 -right-48 w-[300px] h-[300px] rounded-full"
+                style="background: radial-gradient(circle, rgba(24, 138, 204, 0.474) 0%, rgba(59,130,246,0) 70%);">
+            </div>
         </div>
     </div>
+
+
 
     <nav class="fixed top-0 z-50 w-full xl:hidden bg-white border-b border-gray-200 ">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -87,23 +77,23 @@
                 <li>
                     <a href="#" class="flex ms-2">
                         <img src="{{ asset('image/logo.jpg') }}" class="w-10 rounded-full" alt="">
-                        <span
-                            class="self-center px-4 text-xl font-primary2 font-semibold sm:text-2xl whitespace-nowrap ">Kretek
+                        <span class="self-center px-4 font-bold uppercase whitespace-nowrap ">Kretek
                             Village</span>
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard"
-                        class="flex items-center p-2 {{ Request::is('dashboard') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                        class="flex items-center p-2 nav-item {{ Request::is('dashboard') ? 'nav-item-active group' : '' }} group">
                         <i class="fa-solid fa-house"></i>
                         <span class="ms-3">Dashboard</span>
                     </a>
+
                 </li>
                 @if (Auth::user()->rolesuser->first()->name == 'Pengurus-UMKM' ||
                         Auth::user()->rolesuser->first()->name == 'Super-Admin')
                     <li>
                         <a href="{{ route('umkm.index') }}"
-                            class="flex items-center p-2 {{ in_array(Request::path(), ['umkm', 'umkm/create', 'umkm/' . request()->segment(2) . '/edit']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            class="flex items-center p-2  nav-item {{ in_array(Request::path(), ['umkm', 'umkm/create', 'umkm/' . request()->segment(2) . '/edit']) ? ' nav-item-active' : '' }} group">
                             <i class="fa-solid fa-store"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Data UMKM</span>
                         </a>
@@ -113,7 +103,7 @@
                         Auth::user()->rolesuser->first()->name == 'Super-Admin')
                     <li>
                         <a href="{{ route('village.index') }}"
-                            class="flex items-center p-2 {{ in_array(Request::path(), ['village-organization', 'village-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            class="flex items-center p-2 nav-item {{ in_array(Request::path(), ['village', 'village/create']) ? ' nav-item-active' : '' }}  group">
                             <i class="fa-solid fa-people-roof"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Struktur Dusun</span>
                         </a>
@@ -123,7 +113,7 @@
                         Auth::user()->rolesuser->first()->name == 'Super-Admin')
                     <li>
                         <a href="{{ route('youth-organization.index') }}"
-                            class="flex items-center p-2 {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            class="flex items-center p-2 nav-item {{ in_array(Request::path(), ['youth-organization', 'youth-organization/create']) ? ' nav-item-active' : '' }} group">
                             <i class="fa-solid fa-users-between-lines"></i>
 
                             <span class="flex-1 ms-3 whitespace-nowrap">Struktur Pemuda</span>
@@ -133,7 +123,7 @@
                 @if (Auth::user()->rolesuser->first()->name == 'Pengurus-PKK' || Auth::user()->rolesuser->first()->name == 'Super-Admin')
                     <li>
                         <a href="{{ route('pkk.index') }}"
-                            class="flex items-center p-2 {{ in_array(Request::path(), ['PKK-organization', 'PKK-organization/create']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            class="flex items-center p-2 nav-item {{ in_array(Request::path(), ['PKK-organization', 'PKK-organization/create']) ? ' nav-item-active' : '' }}  group">
                             <i class="fa-solid fa-people-line"></i>
 
                             <span class="flex-1 ms-3 whitespace-nowrap">Struktur PKK</span>
@@ -146,7 +136,7 @@
                         Auth::user()->rolesuser->first()->name == 'Pengurus-Desa')
                     <li>
                         <a href="{{ route('about.index') }}"
-                            class="flex items-center p-2 {{ Request::is('product') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                            class="flex items-center p-2 nav-item {{ Request::is('about-website') ? ' nav-item-active' : '' }}  group">
                             <i class="fa-solid fa-inbox"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Manajemen Website</span>
                         </a>
@@ -154,7 +144,7 @@
                 @endif
                 <li>
                     <a href="{{ route('news.index') }}"
-                        class="flex items-center p-2 {{ in_array(Request::path(), ['news', 'news/create', 'news/' . request()->segment(2) . '/edit']) ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
+                        class="flex items-center p-2 nav-item {{ in_array(Request::path(), ['news', 'news/create', 'news/' . request()->segment(2) . '/edit']) ? ' nav-item-active' : '' }}  group">
                         <i class="fa-solid fa-newspaper"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Berita</span>
 
@@ -163,12 +153,8 @@
                 @if (Auth::user()->rolesuser->first()->name == 'Super-Admin')
                     <li>
                         <a href="{{ route('user.index') }}"
-                            class="flex items-center p-2 {{ Request::is('user-management') ? ' text-white bg-green-500 hover:bg-green-600 transition duration-300' : '' }} text-gray-900 rounded-lg  hover:bg-green-200 dark:hover:bg-green-500 group">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="m7.875 14.25 1.214 1.942a2.25 2.25 0 0 0 1.908 1.058h2.006c.776 0 1.497-.4 1.908-1.058l1.214-1.942M2.41 9h4.636a2.25 2.25 0 0 1 1.872 1.002l.164.246a2.25 2.25 0 0 0 1.872 1.002h2.092a2.25 2.25 0 0 0 1.872-1.002l.164-.246A2.25 2.25 0 0 1 16.954 9h4.636M2.41 9a2.25 2.25 0 0 0-.16.832V12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 12V9.832c0-.287-.055-.57-.16-.832M2.41 9a2.25 2.25 0 0 1 .382-.632l3.285-3.832a2.25 2.25 0 0 1 1.708-.786h8.43c.657 0 1.281.287 1.709.786l3.284 3.832c.163.19.291.404.382.632M4.5 20.25h15A2.25 2.25 0 0 0 21.75 18v-2.625c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125V18a2.25 2.25 0 0 0 2.25 2.25Z" />
-                            </svg>
+                            class="flex items-center p-2 nav-item {{ Request::is('user-management') ? ' nav-item-active' : '' }}  group">
+                            <i class="fa-solid fa-user-plus"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Manajemen Akun</span>
 
                         </a>
