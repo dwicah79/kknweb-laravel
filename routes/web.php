@@ -88,6 +88,9 @@ Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengu
 //main page
 
 Route::get(('/'), [HomeController::class, 'index'])->name('home.index');
+Route::get('/loading', function () {
+    return view('loading');
+});
 
 
 
