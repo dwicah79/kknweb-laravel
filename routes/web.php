@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AboutusController;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PKKController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
@@ -83,6 +84,10 @@ Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengu
     Route::put('/about-website/{id}/edit-slider', [AboutusController::class, 'updateslider'])->name('about.slider.update');
     Route::delete('/about-website/{id}', [AboutusController::class, 'destroyslider'])->name('about.slider.destroy');
 });
+
+//main page
+
+Route::get(('/'), [HomeController::class, 'index'])->name('home.index');
 
 
 
