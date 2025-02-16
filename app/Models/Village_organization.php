@@ -17,4 +17,11 @@ class Village_organization extends Model
     {
         return $this->belongsTo(Position::class, 'job_title_id');
     }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'job_title_id');
+    }
+
+
 }
