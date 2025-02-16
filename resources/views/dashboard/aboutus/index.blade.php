@@ -4,13 +4,7 @@
         ['name' => 'DASHBOARD', 'url' => route('dashboard.index')],
         ['name' => 'MANAJEMEN WEBSITE', 'url' => '#'],
     ]" />
-    <div class="w-full flex justify-between items-center bg-gradient-primmary px-5 py-5 mb-2">
-        <h1 class="font-extrabold uppercase text-white text-xl">SLIDER WEBSITE</h1>
-        <a href="{{ route('about.slider.create') }}"
-            class="bg-white rounded-lg w-fit whitespace-nowrap p-2 hover:bg-slate-100"><i class="fa-solid fa-plus"></i>
-            Tambah</a>
-    </div>
-
+    <x-header-component title="SLIDER WEBSITE" route="about.slider.create" />
     <div class="bg-white shadow-md sm:rounded-lg overflow-hidden p-6">
         <div class="overflow-x-auto mt-5">
             <x-alert type="error"></x-alert>

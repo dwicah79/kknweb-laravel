@@ -33,6 +33,40 @@
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
+    <style>
+        /* Gaya untuk scrollbar secara umum */
+        ::-webkit-scrollbar {
+            width: 12px;
+            /* Lebar scrollbar */
+            height: 12px;
+            /* Tinggi scrollbar (untuk scrollbar horizontal) */
+        }
+
+        /* Gaya untuk track (latar belakang scrollbar) */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Warna latar belakang track */
+            border-radius: 10px;
+            /* Membuat track lebih bulat */
+        }
+
+        /* Gaya untuk thumb (bagian yang bisa digerakkan) */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Warna thumb */
+            border-radius: 10px;
+            /* Membuat thumb lebih bulat */
+            border: 3px solid #f1f1f1;
+            /* Padding di sekitar thumb */
+        }
+
+        /* Gaya untuk thumb saat dihover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Warna thumb saat dihover */
+        }
+    </style>
+
 </head>
 
 <body class="bg-primary-100">
@@ -72,7 +106,7 @@
     <aside id="logo-sidebar"
         class="fixed bg-white h-dvh md:w-[250px] rounded-xl shadow z-50 md:m-4 md:h-[calc(100vh-2rem)] flex flex-col justify-between transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full flex flex-col justify-center  px-3 bg-white py-5 rounded-lg pb-4 overflow-y-hidden  ">
+        <div class="h-full flex flex-col justify-center  px-3 bg-white py-5 rounded-lg pb-4 overflow-y-auto">
             <ul class="space-y-5 md:space-y-7 font-medium">
                 <li>
                     <a href="#" class="flex ms-2">
@@ -134,14 +168,59 @@
                 @if (Auth::user()->rolesuser->first()->name == 'Pengurus-Pemuda' ||
                         Auth::user()->rolesuser->first()->name == 'Super-Admin' ||
                         Auth::user()->rolesuser->first()->name == 'Pengurus-Desa')
-                    <li>
-                        <a href="{{ route('about.index') }}"
-                            class="flex items-center p-2 nav-item {{ Request::is('about-website') ? ' nav-item-active' : '' }}  group">
+                    <li class="w-full">
+                        <!-- Tombol Dropdown -->
+                        <button id="dropdownBtn" class="flex items-center w-full p-2 nav-item group ">
                             <i class="fa-solid fa-inbox"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Manajemen Website</span>
-                        </a>
+                        </button>
+
+                        <!-- Menu Dropdown (Tidak Melayang) -->
+                        <ul id="dropdownMenu"
+                            class="hidden bg-white shadow-lg rounded-lg py-2 transition-all duration-300">
+                            <li>
+                                <a href="{{ route('about.index') }}"
+                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::routeIs('about.index') ? 'nav-item-active' : '' }}">
+                                    Slider Website
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('menu-b') ? 'nav-item-active' : '' }}">
+                                    Sambutan Kepala Dusun
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('menu-c') ? 'nav-item-active' : '' }}">
+                                    Menu C
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
+                    <!-- Script JavaScript -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const dropdownBtn = document.getElementById("dropdownBtn");
+                            const dropdownMenu = document.getElementById("dropdownMenu");
+                            const chevronIcon = dropdownBtn.querySelector("i");
+
+                            dropdownBtn.addEventListener("click", function() {
+                                dropdownMenu.classList.toggle("hidden");
+                                chevronIcon.classList.toggle("rotate-180");
+                            });
+
+                            document.addEventListener("click", function(event) {
+                                if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                                    dropdownMenu.classList.add("hidden");
+                                    chevronIcon.classList.remove("rotate-180");
+                                }
+                            });
+                        });
+                    </script>
                 @endif
+
                 <li>
                     <a href="{{ route('news.index') }}"
                         class="flex items-center p-2 nav-item {{ in_array(Request::path(), ['news', 'news/create', 'news/' . request()->segment(2) . '/edit']) ? ' nav-item-active' : '' }}  group">
@@ -212,8 +291,6 @@
             });
         });
     </script>
-
-
 </body>
 
 </html>
