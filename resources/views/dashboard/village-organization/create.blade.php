@@ -2,8 +2,8 @@
 @section('konten')
     <x-breadcrumb :links="[
         ['name' => 'DASHBOARD', 'url' => route('dashboard.index')],
-        ['name' => 'UMKM', 'url' => route('umkm.index')],
-        ['name' => 'TAMBAH DATA UMKM', 'url' => '#'],
+        ['name' => 'STRUKTUR DUSUN', 'url' => route('village.index')],
+        ['name' => 'TAMBAH STRUKTUR DUSUN', 'url' => '#'],
     ]" />
 
     <div class="rounded-lg bg-white p-10">
