@@ -28,6 +28,7 @@ class PositionSeeder extends Seeder
             'Wakil Ketua PKK',
             'Sekretaris PKK',
             'Bendahara PKK',
+            'Anggota',
         ];
 
         foreach ($positions as $position) {
