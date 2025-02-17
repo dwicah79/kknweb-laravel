@@ -24,14 +24,16 @@ class HomeController extends Controller
 
         $headvillage = $village_organization->first();
         $speech = Speech::select('speech')->first();
+        $data2 = Village_organization::with('position')->get();
 
         $data = [
             'headvillage' => $headvillage, // Ubah ke single object, bukan collection
             'photo' => $headvillage ? asset($headvillage->image) : null, // Hindari error jika null
             'speech' => $speech ? $speech->speech : null,
+            // 'SOTK' => $village_organization,
         ];
 
-        return view('home.index', compact('slides'), $data);
+        return view('home.index', compact('slides', 'data2'), $data);
 
     }
 }
