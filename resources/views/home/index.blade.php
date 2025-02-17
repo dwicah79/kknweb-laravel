@@ -42,12 +42,11 @@
 
 <body class="bg-gradient-to-r from-white to-primary-100">
 
-
     @include('template.navbar')
     {{-- @include('template.loading') --}}
 
     <div class="w-full h-screen overflow-hidden">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-carousel thumbnail-slider">
             @foreach ($slides as $slide)
                 <div class="relative w-full h-screen bg-cover bg-center"
                     style="background-image: url('{{ asset($slide['image']) }}');">
@@ -140,21 +139,69 @@
         </div>
     </section>
 
+    <section class="py-10 md:py-20">
+        <div class="container mx-auto px-5 md:px-10">
+            <div class="w-full" data-aos="fade-up" data-aos-delay="200">
+                <h1 class="uppercase text-3xl md:text-5xl text-primary-500 font-extrabold leading-tight">
+                    SOTK Dusun
+                </h1>
+                <h1 class="font-semibold mb-5">Struktur Organisasi Dusun Kretek 1</h1>
+            </div>
 
+            <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+                @foreach ($data2 as $person)
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden text-center" data-aos="fade-up">
+                        <img src="{{ asset($person->image) }}" alt="{{ $person->name }}"
+                            class="w-full h-64 object-cover bg-primary-500">
+                        <div class="p-4 bg-primary-500 text-white">
+                            <h2 class="font-bold text-lg">{{ $person->name }}</h2>
+                            <p class="text-sm">{{ $person->village->job_title }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
+            <!-- Mobile Slider -->
+            <div class="block md:hidden"> <!-- Changed class structure -->
+                <div class="owl-carousel sotk-slider">
+                    @foreach ($data2 as $person)
+                        <div class="item bg-white rounded-2xl shadow-lg overflow-hidden text-center">
+                            <img src="{{ asset($person->image) }}" alt="{{ $person->name }}"
+                                class="w-full h-64 object-cover bg-red-500">
+                            <div class="p-4 bg-red-500 text-white">
+                                <h2 class="font-bold text-lg">{{ $person->name }}</h2>
+                                <p class="text-sm">{{ $person->village->job_title }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
 
     @include('template.footer')
 
     <script>
         $(document).ready(function() {
-            $(".owl-carousel").owlCarousel({
+            // Konfigurasi untuk thumbnail slider
+            $(".thumbnail-slider").owlCarousel({
                 items: 1,
                 loop: true,
                 autoplay: true,
                 autoplayTimeout: 4000,
                 autoplayHoverPause: false,
                 nav: true,
-                navText: ["&#FFFF;", "&#FFFF;"],
+                dots: true
+            });
+
+            // Konfigurasi untuk SOTK slider
+            $(".sotk-slider").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: false,
+                nav: true,
                 dots: true
             });
         });

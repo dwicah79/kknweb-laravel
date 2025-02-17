@@ -41,11 +41,11 @@
             <h3 class="text-lg font-semibold mb-4">Nomor Telepon Penting</h3>
             <div class="space-y-3">
                 <div>
-                    <span class="block">Jumadi/Kades Kersik</span>
-                    <span class="block">081242368478</span>
+                    <span class="block">Mufid/Kadus Kretek</span>
+                    <span class="block">+6285647638871</span>
                 </div>
                 <div>
-                    <span class="block">Yayan/Ambulan Kersik</span>
+                    <span class="block">Yayan/Ambulan Karangrejo</span>
                     <span class="block">085392095123</span>
                 </div>
             </div>
