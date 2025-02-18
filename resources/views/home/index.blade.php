@@ -4,16 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ asset('image/logo.jpg') }}" type="image/x-icon">
-
     <title>Dusun Kretek 1</title>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
@@ -37,14 +32,25 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        .owl-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+            gap: 10px;
+        }
+
+        .owl-nav button {
+            background: none !important;
+            border: none;
+            outline: none;
+        }
     </style>
 </head>
 
 <body class="bg-gradient-to-r from-white to-primary-100">
-
     @include('template.navbar')
-    {{-- @include('template.loading') --}}
-
+    @include('template.loading')
     <div class="w-full h-screen overflow-hidden">
         <div class="owl-carousel thumbnail-slider">
             @foreach ($slides as $slide)
@@ -106,7 +112,7 @@
         <div class="container mx-auto flex flex-wrap items-center px-5 md:px-10 ">
             <div class="w-full md:w-1/2 flex  justify-center" data-aos="zoom-in">
                 <div class="flex flex-col justify-center items-center w-full">
-                    <img src="{{ $headvillage->image }}" alt="Foto Kepala Desa"
+                    <img src="{{ $headvillage->image }}" alt="Foto Kepala Desa" loading="lazy"
                         class="w-full max-w-sm md:max-w-md h-96 rounded-lg shadow-lg object-cover">
                     <h1 class="uppercase text-primary-500 font-bold mt-2">{{ $headvillage->name }}</h1>
                 </div>
@@ -147,11 +153,10 @@
                 </h1>
                 <h1 class="font-semibold mb-5">Struktur Organisasi Dusun Kretek 1</h1>
             </div>
-
             <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 @foreach ($data2 as $person)
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden text-center" data-aos="fade-up">
-                        <img src="{{ asset($person->image) }}" alt="{{ $person->name }}"
+                        <img src="{{ asset($person->image) }}" alt="{{ $person->name }}" loading="lazy"
                             class="w-full h-64 object-cover bg-primary-500">
                         <div class="p-4 bg-primary-500 text-white">
                             <h2 class="font-bold text-lg">{{ $person->name }}</h2>
@@ -161,14 +166,14 @@
                 @endforeach
             </div>
 
-            <!-- Mobile Slider -->
-            <div class="block md:hidden"> <!-- Changed class structure -->
+
+            <div class="block md:hidden">
                 <div class="owl-carousel sotk-slider">
                     @foreach ($data2 as $person)
                         <div class="item bg-white rounded-2xl shadow-lg overflow-hidden text-center">
-                            <img src="{{ asset($person->image) }}" alt="{{ $person->name }}"
-                                class="w-full h-64 object-cover bg-red-500">
-                            <div class="p-4 bg-red-500 text-white">
+                            <img src="{{ asset($person->image) }}" alt="{{ $person->name }}" loading="lazy"
+                                class="w-full h-64 object-cover bg-primary-500">
+                            <div class="p-4 bg-primary-500 text-white">
                                 <h2 class="font-bold text-lg">{{ $person->name }}</h2>
                                 <p class="text-sm">{{ $person->village->job_title }}</p>
                             </div>
@@ -179,11 +184,87 @@
         </div>
     </section>
 
+    <section class="py-10 md:py-20">
+        <div class="container mx-auto px-5 md:px-10">
+            <div class="w-full mb-8 text-start" data-aos="fade-up" data-aos-delay="200">
+                <h1 class="uppercase text-3xl md:text-5xl text-primary-500 font-extrabold leading-tight">
+                    Berita Dusun
+                </h1>
+                <p class="font-semibold">Menyajikan informasi terbaru tentang peristiwa, berita terkini, dan
+                    artikel-artikel dari Dusun Kretek 1</p>
+            </div>
+
+            <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                @foreach ($news as $item)
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col h-full"
+                        data-aos="fade-up">
+                        <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" loading="lazy"
+                            class="w-full h-56 object-cover">
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h2 class="font-bold text-lg text-gray-900">{{ $item->title }}</h2>
+                            <p class="text-sm text-gray-700 flex-grow">
+                                {{ Str::limit(strip_tags($item->content), 100, '...') }}
+                            </p>
+                            <div class="flex items-center justify-between text-gray-500 text-sm mt-3">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="inline-flex gap-2">
+                                        <i class="fas fa-user"></i> {{ $item->writer }}
+                                    </div>
+                                    <div class="inline-flex gap-2">
+                                        @if ($item->category->name == 'UMKM')
+                                            <div class="badge-blue">{{ $item->category->name }}</div>
+                                        @elseif ($item->category->name == 'Desa')
+                                            <div class="badge-green">{{ $item->category->name }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="bg-primary-500 text-white text-xs font-bold px-3 py-2 rounded-lg">
+                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="block md:hidden">
+                <div class="owl-carousel news-slider">
+                    @foreach ($news as $item)
+                        <div class="item bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
+                            <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" loading="lazy"
+                                class="w-full h-56 object-cover">
+                            <div class="p-5 flex flex-col flex-grow">
+                                <h2 class="font-bold text-lg text-gray-900">{{ $item->title }}</h2>
+                                <p class="text-sm text-gray-700 flex-grow">
+                                    {{ Str::limit(strip_tags($item->content), 100, '...') }}
+                                </p>
+                                <div class="flex items-center justify-between text-gray-500 text-sm mt-3">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user"></i> {{ $item->writer }}
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <span class="bg-primary-500 text-white text-xs font-bold px-3 py-2 rounded-lg">
+                                        {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
     @include('template.footer')
 
     <script>
         $(document).ready(function() {
-            // Konfigurasi untuk thumbnail slider
             $(".thumbnail-slider").owlCarousel({
                 items: 1,
                 loop: true,
@@ -193,8 +274,6 @@
                 nav: true,
                 dots: true
             });
-
-            // Konfigurasi untuk SOTK slider
             $(".sotk-slider").owlCarousel({
                 items: 1,
                 loop: true,
@@ -202,7 +281,46 @@
                 autoplayTimeout: 4000,
                 autoplayHoverPause: false,
                 nav: true,
-                dots: true
+                dots: true,
+                navText: [
+                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
+                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $(".news-slider").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: false,
+                nav: true,
+                dots: true,
+                navText: [
+                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
+                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
             });
         });
     </script>
