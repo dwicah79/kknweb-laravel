@@ -17,7 +17,11 @@
                     @if (!$loop->last)
                         <a href="{{ $link['url'] }}" class=" font-semibold">{{ $link['name'] }}</a>
                     @else
-                        <span class="text-gray-800 font-semibold">{{ $link['name'] }}</span>
+                        <span
+                            class="text-gray-800 px-2 font-semibold truncate w-full max-w-xs sm:max-w-sm md:max-w-none"
+                            title="{{ $link['name'] }}">
+                            {{ $link['name'] }}
+                        </span>
                     @endif
                 @endif
             </li>
