@@ -1,4 +1,5 @@
-<footer class="bg-gradient-to-r from-primary-500 to-primary-300 py-8  text-white p-5 rounded-2xl mx-8 mb-5">
+<footer
+    class="bg-gradient-to-r from-primary-500 to-primary-300 py-8  text-white p-5 md:rounded-2xl mx-0 md:mx-8 mb-0 md:mb-5">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Logo and Information -->
         <div>
