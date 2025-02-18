@@ -36,4 +36,10 @@ class HomeController extends Controller
         // return $slides;
         return view('home.index', compact('slides', 'data2', 'news', 'umkm'), $data);
     }
+
+    public function newsindex()
+    {
+        $news = News::latest()->paginate(9);
+        return view('home.news.index', compact('news'));
+    }
 }
