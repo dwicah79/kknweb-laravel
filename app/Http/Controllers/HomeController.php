@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\About;
 use App\Models\Speech;
+use App\Models\Umkm;
 use Illuminate\Http\Request;
 use App\Models\Village_organization;
 
@@ -25,12 +26,14 @@ class HomeController extends Controller
         $speech = Speech::select('speech')->first();
         $data2 = Village_organization::with('position')->get();
         $news = News::latest()->take(6)->get();
+        $umkm = Umkm::latest()->take(6)->get();
 
         $data = [
             'headvillage' => $headvillage,
             'photo' => $headvillage ? asset($headvillage->image) : null,
             'speech' => $speech ? $speech->speech : null,
         ];
-        return view('home.index', compact('slides', 'data2', 'news'), $data);
+        // return $slides;
+        return view('home.index', compact('slides', 'data2', 'news', 'umkm'), $data);
     }
 }

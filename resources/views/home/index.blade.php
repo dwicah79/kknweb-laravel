@@ -83,7 +83,7 @@
                 <div class="w-1/2 sm:w-1/3 md:w-1/2 p-3" data-aos="flip-left">
                     <div class="bg-white shadow-lg rounded-lg p-5 flex flex-col items-center text-center">
                         <i class="fa-solid fa-landmark text-primary-400 text-7xl"></i>
-                        <span class="mt-3 font-semibold uppercase text-gray-700">Profil Dusun</span>
+                        <span class="mt-3 font-semibold uppercase text-gray-700">Organisasi Pemuda</span>
                     </div>
                 </div>
                 <div class="w-1/2 sm:w-1/3 md:w-1/2 p-3" data-aos="flip-right" data-aos-delay="100">
@@ -228,6 +228,84 @@
                     </div>
                 @endforeach
             </div>
+
+            <div class="block md:hidden">
+                <div class="owl-carousel news-slider">
+                    @foreach ($news as $item)
+                        <div class="item bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
+                            <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" loading="lazy"
+                                class="w-full h-56 object-cover">
+                            <div class="p-5 flex flex-col flex-grow">
+                                <h2 class="font-bold text-lg text-gray-900">{{ $item->title }}</h2>
+                                <p class="text-sm text-gray-700 flex-grow">
+                                    {{ Str::limit(strip_tags($item->content), 100, '...') }}
+                                </p>
+                                <div class="flex items-center justify-between text-gray-500 text-sm mt-3">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user"></i> {{ $item->writer }}
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <span class="bg-primary-500 text-white text-xs font-bold px-3 py-2 rounded-lg">
+                                        {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-10 md:py-20">
+        <div class="container mx-auto px-5 md:px-10">
+            <div class="w-full mb-8 text-start" data-aos="fade-up" data-aos-delay="200">
+                <h1 class="uppercase text-3xl md:text-5xl text-primary-500 font-extrabold leading-tight">
+                    UMKM Dusun
+                </h1>
+                <p class="font-semibold">Layanan yang disediakan promosi produk UMKM Dusun sehingga mampu meningkatkan
+                    perekonomian masyarakat Desa</p>
+            </div>
+
+            <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach ($umkm as $item)
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full transition-transform transform hover:scale-105"
+                        data-aos="fade-up">
+
+                        <!-- Gambar dengan efek hover zoom -->
+                        <div class="relative group">
+                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}" loading="lazy"
+                                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <a href="#"
+                                    class="inline-flex p-3 border-2 border-white rounded-full text-white text-lg font-semibold">Lihat
+                                    Detail</a>
+                            </div>
+                        </div>
+
+                        <!-- Deskripsi dan informasi lainnya -->
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="font-semibold text-xl text-gray-900 mb-2">{{ $item->name }}</h2>
+                            <p class="text-sm text-gray-600 flex-grow mb-4">
+                                {{ Str::limit(strip_tags($item->description), 100, '...') }}
+                            </p>
+                            <div class="mt-4 flex justify-center">
+                                <a href="https://wa.me/{{ $item->telp }}" target="_blank">
+                                    <button
+                                        class="bg-primary-500 text-white py-3 px-6 rounded-full hover:bg-primary-600 transition-colors">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                        Pesan Sekarang
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+
+
 
             <div class="block md:hidden">
                 <div class="owl-carousel news-slider">
