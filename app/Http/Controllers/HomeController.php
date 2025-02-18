@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\About;
 use App\Models\Speech;
-use App\Models\Village_organization;
 use Illuminate\Http\Request;
+use App\Models\Village_organization;
 
 class HomeController extends Controller
 {
@@ -15,25 +16,21 @@ class HomeController extends Controller
             $slide->image = asset($slide->image);
             return $slide;
         });
-
         $village_organization = Village_organization::with('position')
             ->whereHas('position', function ($query) {
                 $query->where('job_title', 'Kepala Dusun');
             })
-            ->get(); // Mengambil semua data sebagai collection
-
+            ->get();
         $headvillage = $village_organization->first();
         $speech = Speech::select('speech')->first();
         $data2 = Village_organization::with('position')->get();
+        $news = News::latest()->take(6)->get();
 
         $data = [
-            'headvillage' => $headvillage, // Ubah ke single object, bukan collection
-            'photo' => $headvillage ? asset($headvillage->image) : null, // Hindari error jika null
+            'headvillage' => $headvillage,
+            'photo' => $headvillage ? asset($headvillage->image) : null,
             'speech' => $speech ? $speech->speech : null,
-            // 'SOTK' => $village_organization,
         ];
-
-        return view('home.index', compact('slides', 'data2'), $data);
-
+        return view('home.index', compact('slides', 'data2', 'news'), $data);
     }
 }
