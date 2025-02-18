@@ -42,4 +42,11 @@ class HomeController extends Controller
         $news = News::latest()->paginate(9);
         return view('home.news.index', compact('news'));
     }
+
+    public function newsdetile($id)
+    {
+        $news = News::find($id);
+        $recentNews = News::latest()->take(5)->get();
+        return view('home.news.detile', compact('news', 'recentNews'));
+    }
 }
