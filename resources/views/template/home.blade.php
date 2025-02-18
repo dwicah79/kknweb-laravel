@@ -48,11 +48,11 @@
     </style>
 </head>
 
-<body>
+<body class="bg-gradient-to-r from-slate-100 to-primary-100">
     @include('template.navbar')
     {{-- @include('template.loading') --}}
 
-    <div class="mt-20 mx-0 md:mx-20">
+    <div class="mt-24 mx-0 md:mx-20">
         @yield('content')
     </div>
 

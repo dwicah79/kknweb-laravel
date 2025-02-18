@@ -89,6 +89,7 @@ Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengu
 
 Route::get(('/'), [HomeController::class, 'index'])->name('home.index');
 Route::get('/guestnews', [HomeController::class, 'newsindex'])->name('home.news.index');
+Route::get('/guestnews/{id}', [HomeController::class, 'newsdetile'])->name('home.news.detile');
 Route::get('/loading', function () {
     return view('loading');
 });
