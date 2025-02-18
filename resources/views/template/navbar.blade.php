@@ -1,5 +1,10 @@
-<nav x-data="{ scrolled: false, open: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" :class="scrolled ? 'bg-sky-500 shadow-md' : 'bg-transparent'"
-    class="fixed top-0 left-0 w-full max-w-screen px-4  mx-auto transition-all duration-300 ease-in-out lg:px-8  z-50">
+<nav x-data="{
+    scrolled: false,
+    open: false,
+    isHome: window.location.pathname === '/'
+}" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
+    :class="(isHome && !scrolled) ? 'bg-transparent' : 'bg-sky-500 shadow-md'"
+    class="fixed top-0 left-0 w-full max-w-screen px-4 mx-auto transition-all duration-300 ease-in-out lg:px-8 z-50">
 
     <div class="container flex flex-wrap items-center justify-between mx-auto text-white">
         <a href="#" class="mr-4 block cursor-pointer py-1.5 text-lg font-jakartasans font-bold">
@@ -26,11 +31,11 @@
         <ul class="hidden md:flex space-x-6">
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a>
-            </li>
+            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a></li>
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
                     PKK</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a></li>
+            <li><a href="{{ route('home.news.index') }}"
+                    class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a></li>
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Galeri</a></li>
         </ul>
 
@@ -38,10 +43,8 @@
         <div :class="open ? 'block' : 'hidden'"
             class="w-full md:hidden absolute top-full left-0 bg-sky-500 shadow-lg transition-all duration-300">
             <ul class="flex flex-col space-y-4 text-center p-4">
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a>
-                </li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a>
-                </li>
+                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
+                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
                 <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a>
                 </li>
                 <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
