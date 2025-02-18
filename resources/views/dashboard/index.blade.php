@@ -8,8 +8,8 @@
                 <h1 class="text-2xl md:text-4xl font-bold text-white">Selamat Datang, {{ Auth::user()->name }} 🎉</h1>
                 <p class="text-white mt-2">Kelola informasi desa dengan mudah dan cepat.</p>
             </div>
-            <div class="w-32 md:w-48 opacity-50">
-                <img src="{{ asset('image/people.png') }}" alt="User Image" class="w-full h-full">
+            <div class="w-32 md:w-48 opacity-100">
+                <img src="{{ asset('image/logo.jpg') }}" alt="User Image" class="w-full h-full rounded-full">
             </div>
         </div>
     </header>
