@@ -1,56 +1,5 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ asset('image/logo.jpg') }}" type="image/x-icon">
-    <title>Dusun Kretek 1</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-    <style>
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-            border: 3px solid #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        .owl-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 12px;
-            gap: 10px;
-        }
-
-        .owl-nav button {
-            background: none !important;
-            border: none;
-            outline: none;
-        }
-    </style>
-</head>
-
-<body class="bg-gradient-to-r from-white to-primary-100">
-    @include('template.navbar')
-    @include('template.loading')
+@extends('template.home')
+@section('content')
     <div class="w-full h-screen overflow-hidden">
         <div class="owl-carousel thumbnail-slider">
             @foreach ($slides as $slide)
@@ -59,9 +8,9 @@
                     <div class="absolute inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
                         <div class="text-center text-white">
                             <h1 class="text-4xl font-bold drop-shadow-lg mb-5">{{ $slide['title'] }}</h1>
-                            <a href=""
-                                class="border border-white p-3 hover:bg-white hover:text-gray-500 rounded-lg font-semibold transition duration-300">Baca
-                                Berita Kretek 📰</a>
+                            <a href="#konten"
+                                class="border border-white p-3 hover:bg-white hover:text-gray-500 rounded-lg font-semibold transition duration-300">
+                                Explore Kretek</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +18,7 @@
         </div>
     </div>
 
-    <section>
+    <section id="konten">
         <div class="container mx-auto mt-5 md:mt-20 flex flex-wrap items-center px-5 md:px-10">
             <div class="w-full md:w-1/2  md:py-32">
                 <h1 class="uppercase text-2xl md:text-5xl text-primary-500 font-bold" data-aos="fade-up">Jelajahi Dusun
@@ -118,8 +67,8 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2">
-                <h1 class="uppercase text-3xl md:text-5xl text-primary-500 font-extrabold leading-tight"
-                    data-aos="fade-up" data-aos-delay="200">
+                <h1 class="uppercase text-3xl md:text-5xl text-primary-500 font-extrabold leading-tight" data-aos="fade-up"
+                    data-aos-delay="200">
                     Sambutan Kepala Dusun
                 </h1>
                 <p class=" text-gray-700 text-base md:text-lg text-justify leading-relaxed"data-aos="fade-up"
@@ -196,8 +145,7 @@
 
             <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 @foreach ($news as $item)
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col h-full"
-                        data-aos="fade-up">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col h-full" data-aos="fade-up">
                         <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" loading="lazy"
                             class="w-full h-56 object-cover">
                         <div class="p-5 flex flex-col flex-grow">
@@ -257,6 +205,7 @@
             </div>
         </div>
     </section>
+
     <section class="py-10 md:py-20">
         <div class="container mx-auto px-5 md:px-10">
             <div class="w-full mb-8 text-start" data-aos="fade-up" data-aos-delay="200">
@@ -335,73 +284,4 @@
             </div>
         </div>
     </section>
-
-
-
-
-    @include('template.footer')
-
-    <script>
-        $(document).ready(function() {
-            $(".thumbnail-slider").owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                autoplayHoverPause: false,
-                nav: true,
-                dots: true
-            });
-            $(".sotk-slider").owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                autoplayHoverPause: false,
-                nav: true,
-                dots: true,
-                navText: [
-                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
-                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1
-                    }
-                }
-            });
-            $(".news-slider").owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                autoplayHoverPause: false,
-                nav: true,
-                dots: true,
-                navText: [
-                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
-                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1
-                    }
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+@endsection
