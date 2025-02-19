@@ -46,8 +46,8 @@
                     <span class="block">+6285647638871</span>
                 </div>
                 <div>
-                    <span class="block">Yayan/Ambulan Karangrejo</span>
-                    <span class="block">085392095123</span>
+                    <span class="block">Catur/Ambulan Karangrejo</span>
+                    <span class="block">+6281392705553</span>
                 </div>
             </div>
         </div>
