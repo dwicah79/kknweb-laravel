@@ -1,6 +1,6 @@
 @extends('template.home')
 @section('content')
-    <section class="mt-24 md:mx:auto px-20">
+    <section class="mt-24 md:mx:auto md:px-20">
         <x-breadcrumb :links="[['name' => 'Home', 'url' => '/'], ['name' => 'BERITA', 'url' => '#']]" />
         <div class="container mx-auto px-5 ">
             <div class="w-full mb-8 text-start" data-aos="fade-up" data-aos-delay="200">
@@ -54,7 +54,8 @@
         <div class="block md:hidden">
             <div class="owl-carousel news-slider">
                 @foreach ($news as $item)
-                    <div class="item bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
+                    <a href="{{ route('home.news.detile', $item->id) }}"
+                        class="item bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
                         <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" loading="lazy"
                             class="w-full h-56 object-cover">
                         <div class="p-5 flex flex-col flex-grow">
@@ -73,7 +74,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
