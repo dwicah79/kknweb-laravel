@@ -51,4 +51,18 @@ class HomeController extends Controller
         // return $recentNews;
         return view('home.news.detile', compact('news', 'recentNews'));
     }
+
+    public function umkmindex()
+    {
+        $umkm = Umkm::latest()->paginate(9);
+        return view('home.umkm.index', compact('umkm'));
+    }
+
+    public function umkmdetile($id)
+    {
+        $umkm = Umkm::find($id);
+        $recentUmkm = Umkm::latest()->take(5)->get();
+
+        return view('home.umkm.detile', compact('umkm', 'recentUmkm'));
+    }
 }
