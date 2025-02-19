@@ -1,6 +1,6 @@
 @extends('template.home')
 @section('content')
-    <section>
+    <section class="mt-24 md:mx:auto px-20">
         <x-breadcrumb :links="[['name' => 'Home', 'url' => '/'], ['name' => 'BERITA', 'url' => '#']]" />
         <div class="container mx-auto px-5 ">
             <div class="w-full mb-8 text-start" data-aos="fade-up" data-aos-delay="200">
@@ -76,7 +76,6 @@
                     </div>
                 @endforeach
             </div>
-        </div>
         </div>
         <div class="hidden md:flex justify-center mb-5">
             {{ $news->links('vendor.pagination.custom') }}
