@@ -29,8 +29,9 @@
 
         <!-- Menu Desktop -->
         <ul class="hidden md:flex space-x-6">
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
+            <li><a href="/" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
+            <li><a href="{{ route('home.umkm.index') }}"
+                    class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a></li>
             <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
                     PKK</a></li>
@@ -43,13 +44,15 @@
         <div :class="open ? 'block' : 'hidden'"
             class="w-full md:hidden absolute top-full left-0 bg-sky-500 shadow-lg transition-all duration-300">
             <ul class="flex flex-col space-y-4 text-center p-4">
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
+                <li><a href="/" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
+                <li><a href="{{ route('home.umkm.index') }}"
+                        class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
                 <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a>
                 </li>
                 <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
                         PKK</a></li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a>
+                <li><a href="{{ route('home.news.index') }}"
+                        class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a>
                 </li>
                 <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Galeri</a>
                 </li>
