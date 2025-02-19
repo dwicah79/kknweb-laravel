@@ -47,6 +47,8 @@ class HomeController extends Controller
     {
         $news = News::find($id);
         $recentNews = News::latest()->take(5)->get();
+
+        // return $recentNews;
         return view('home.news.detile', compact('news', 'recentNews'));
     }
 }
