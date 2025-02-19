@@ -50,9 +50,9 @@
 
 <body class="bg-gradient-to-r from-slate-100 to-primary-100">
     @include('template.navbar')
-    {{-- @include('template.loading') --}}
+    @include('template.loading')
 
-    <div class="mt-24 mx-0 md:mx-20">
+    <div>
         @yield('content')
     </div>
 
@@ -97,6 +97,30 @@
                 }
             });
             $(".news-slider").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: false,
+                nav: true,
+                dots: true,
+                navText: [
+                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
+                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $(".detile-news-slider").owlCarousel({
                 items: 1,
                 loop: true,
                 autoplay: true,
