@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function newsindex()
     {
-        $news = News::latest()->paginate(9);
+        $news = News::orderBy('add_date', 'desc')->paginate(9);
         return view('home.news.index', compact('news'));
     }
 
