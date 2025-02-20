@@ -14,7 +14,7 @@
                     <div class="flex gap-2">
                         <p class="text-gray-600 mb-4 inline-flex items-center gap-2">
                             <i class="fa-solid fa-calendar-days"></i>
-                            {{ $news->created_at->format('d F Y') }}
+                            {{ \Carbon\Carbon::parse($news->add_date)->timezone('Asia/Jakarta')->translatedFormat('d F Y') }}
                         </p>
                         <p class="text-gray-600 mb-4 inline-flex items-center gap-2">
                             <i class="fa-regular fa-user"></i>
@@ -41,10 +41,11 @@
                                     <h3 class="text-sm font-semibold">{{ Str::limit($recent->title, 50, '...') }}</h3>
                                     <p class="text-xs text-gray-600 mb-1 mt-1 inline-flex gap-2"><i
                                             class="fa-solid fa-calendar-days"></i>
-                                        {{ $news->created_at->format('d F Y') }}</p>
+                                        {{ \Carbon\Carbon::parse($recent->add_date)->timezone('Asia/Jakarta')->translatedFormat('d F Y') }}
+                                    </p>
                                     <p class="text-gray-600 mb-1 text-xs  inline-flex items-center gap-2">
                                         <i class="fa-regular fa-user"></i>
-                                        {{ $news->writer }}
+                                        {{ $recent->writer }}
                                     </p>
                                     <p class="text-gray-600 text-xs  inline-flex items-center gap-2">
                                         <i class="fa-solid fa-list"></i>
