@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Speech;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PKKController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SpeechController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
@@ -74,6 +76,13 @@ Route::middleware(['auth', 'role:Super-Admin'])->group(function () {
     Route::get('/user-management/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/user-management/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user-management/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+    Route::get('/speechmanagement', [SpeechController::class, 'index'])->name('speech.index');
+    Route::get('/speechmanagement/create', [SpeechController::class, 'create'])->name('speech.create');
+    Route::post('/speechmanagement/create', [SpeechController::class, 'store'])->name('speech.store');
+    Route::get('/speechmanagement/{id}/edit', [SpeechController::class, 'edit'])->name('speech.edit');
+    Route::put('/speechmanagement/{id}', [SpeechController::class, 'update'])->name('speech.update');
+    Route::delete('/speechmanagement/{id}', [SpeechController::class, 'destroy'])->name('speech.destroy');
 });
 
 Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengurus-PKK'])->group(function () {
