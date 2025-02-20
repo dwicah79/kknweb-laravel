@@ -73,7 +73,7 @@
                 </h1>
                 <p class=" text-gray-700 text-base md:text-lg text-justify leading-relaxed"data-aos="fade-up"
                     data-aos-delay="300">
-                    "{{ $speech }}"
+                    {!! $speech !!}
                 </p>
             </div>
         </div>
