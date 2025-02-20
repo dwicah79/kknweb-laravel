@@ -3,17 +3,18 @@
     <x-breadcrumb :links="[['name' => 'DASHBOARD', 'url' => route('dashboard.index')], ['name' => 'BERITA', 'url' => '#']]" />
     <x-header-component title="BERITA DUSUN" route="news.create" />
     <div class="bg-white shadow-md sm:rounded-lg overflow-hidden p-6">
-        <div class="w-full flex justify-end ">
+        <div class="w-full flex justify-end">
             <div class="w-full md:w-1/2">
-                <form class="flex items-center justify-end">
-                    <label for="voice-search" class="sr-only">Cari</label>
+                <form class="flex items-center justify-end" method="GET" action="{{ route('news.index') }}">
+                    <label for="search" class="sr-only">Cari</label>
                     <div class="relative w-full">
-                        <input type="text" id="voice-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Cari UMKM..." required />
+                        <input type="text" id="search" name="search" value="{{ request('search') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Cari Judul Berita..." />
                     </div>
                     <button type="submit"
-                        class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-green-500 rounded-lg border border-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-primary-500 rounded-lg border border-primary-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
