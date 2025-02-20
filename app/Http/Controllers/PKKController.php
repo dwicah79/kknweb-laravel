@@ -8,11 +8,12 @@ use App\Models\PKK_Organization;
 
 class PKKController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = PKK_Organization::with('village')->paginate(10);
-
-        // return $data;
+        $querry = $request->input('search');
+        $data = PKK_Organization::when($querry, function ($q) use ($querry) {
+            return $q->where('name', 'like', "%$querry%");
+        })->paginate(10);
 
         return view('dashboard.pkk-organization.index', compact('data'));
     }
