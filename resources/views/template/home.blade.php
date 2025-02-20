@@ -144,6 +144,30 @@
                     }
                 }
             });
+            $(".umkm-slider").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: false,
+                nav: true,
+                dots: true,
+                navText: [
+                    '<i class="fas fa-chevron-left text-white bg-primary-500 px-3 py-2 rounded-lg"></i>',
+                    '<i class="fas fa-chevron-right text-white bg-primary-500 px-3 py-2 rounded-lg"></i>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
         });
     </script>
 </body>
