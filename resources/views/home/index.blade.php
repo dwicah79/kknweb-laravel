@@ -71,9 +71,9 @@
                     data-aos-delay="200">
                     Sambutan Kepala Dusun
                 </h1>
-                <p class=" text-gray-700 text-base md:text-lg text-justify leading-relaxed"data-aos="fade-up"
+                <p class="text-gray-700 text-base md:text-lg text-justify leading-relaxed" data-aos="fade-up"
                     data-aos-delay="300">
-                    {!! $speech !!}
+                    {{ str_replace('&nbsp;', ' ', strip_tags($speech)) }}
                 </p>
             </div>
         </div>
@@ -233,7 +233,7 @@
                                 class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="#"
+                                <a href="{{ route('home.umkm.detile', $item->id) }}"
                                     class="inline-flex p-3 border-2 border-white rounded-full text-white text-lg font-semibold">Lihat
                                     Detail</a>
                             </div>
@@ -260,4 +260,43 @@
             </div>
         </div>
     </section>
+
+    <div class="block md:hidden">
+        <div class="owl-carousel umkm-slider">
+            @foreach ($umkm as $item)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full transition-transform transform hover:scale-105"
+                    data-aos="fade-up">
+
+                    <!-- Gambar dengan efek hover zoom -->
+                    <div class="relative group">
+                        <img src="{{ asset($item->image) }}" alt="{{ $item->title }}" loading="lazy"
+                            class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="{{ route('home.umkm.detile', $item->id) }}"
+                                class="inline-flex p-3 border-2 border-white rounded-full text-white text-lg font-semibold">Lihat
+                                Detail</a>
+                        </div>
+                    </div>
+
+                    <!-- Deskripsi dan informasi lainnya -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2 class="font-semibold text-xl text-gray-900 mb-2">{{ $item->name }}</h2>
+                        <p class="text-sm text-gray-600 flex-grow mb-4">
+                            {{ Str::limit(strip_tags($item->description), 100, '...') }}
+                        </p>
+                        <div class="mt-4 flex justify-center">
+                            <a href="https://wa.me/{{ $item->telp }}" target="_blank">
+                                <button
+                                    class="bg-primary-500 text-white py-3 px-6 rounded-full hover:bg-primary-600 transition-colors">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                    Pesan Sekarang
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
