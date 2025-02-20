@@ -29,33 +29,36 @@
 
         <!-- Menu Desktop -->
         <ul class="hidden md:flex space-x-6">
-            <li><a href="/" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
+            <li><a href="/" class="nav-home {{ request()->is('/') ? 'nav-home-active' : '' }}">Home</a></li>
             <li><a href="{{ route('home.umkm.index') }}"
-                    class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
-                    PKK</a></li>
+                    class="nav-home {{ request()->is('guestumkm*') ? 'nav-home-active' : '' }}">UMKM</a></li>
+            <li><a href="#" class="nav-home {{ request()->is('pemuda') ? 'nav-home-active' : '' }}">Pemuda</a>
+            </li>
+            <li><a href="#"
+                    class="nav-home {{ request()->is('organisasi-pkk') ? 'nav-home-active' : '' }}">Organisasi PKK</a>
+            </li>
             <li><a href="{{ route('home.news.index') }}"
-                    class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a></li>
-            <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Galeri</a></li>
+                    class="nav-home {{ request()->is('guestnews*') ? 'nav-home-active' : '' }}">Berita</a></li>
+            <li><a href="#" class="nav-home {{ request()->is('galeri') ? 'nav-home-active' : '' }}">Galeri</a>
+            </li>
         </ul>
 
         <!-- Menu Mobile -->
-        <div :class="open ? 'block' : 'hidden'"
-            class="w-full md:hidden absolute top-full left-0 bg-sky-500 shadow-lg transition-all duration-300">
+        <div :class="open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5 pointer-events-none'"
+            class="w-full md:hidden absolute top-full left-0 bg-sky-500 shadow-lg transition-all duration-300 ease-in-out">
             <ul class="flex flex-col space-y-4 text-center p-4">
-                <li><a href="/" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Home</a></li>
+                <li><a href="/" class="nav-home {{ request()->is('/') ? 'nav-home-active' : '' }}">Home</a></li>
                 <li><a href="{{ route('home.umkm.index') }}"
-                        class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">UMKM</a></li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Pemuda</a>
-                </li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Organisasi
+                        class="nav-home {{ request()->is('guestumkm*') ? 'nav-home-active' : '' }}">UMKM</a></li>
+                <li><a href="#"
+                        class="nav-home {{ request()->is('pemuda') ? 'nav-home-active' : '' }}">Pemuda</a></li>
+                <li><a href="#"
+                        class="nav-home {{ request()->is('organisasi-pkk') ? 'nav-home-active' : '' }}">Organisasi
                         PKK</a></li>
                 <li><a href="{{ route('home.news.index') }}"
-                        class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Berita</a>
-                </li>
-                <li><a href="#" class="p-2 font-semibold md:text-lg hover:text-slate-300 transition">Galeri</a>
-                </li>
+                        class="nav-home {{ request()->is('guestnews*') ? 'nav-home-active' : '' }}">Berita</a></li>
+                <li><a href="#"
+                        class="nav-home {{ request()->is('galeri') ? 'nav-home-active' : '' }}">Galeri</a></li>
             </ul>
         </div>
     </div>
