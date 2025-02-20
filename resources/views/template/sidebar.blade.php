@@ -191,9 +191,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('menu-c') ? 'nav-item-active' : '' }}">
-                                    Menu C
+                                <a href="{{ route('gallery.index') }}"
+                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('/management-gallery*') ? 'nav-item-active' : '' }}">
+                                    Galeri Dusun
                                 </a>
                             </li>
                         </ul>
