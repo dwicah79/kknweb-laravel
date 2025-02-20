@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = News::with('category')->paginate(10);
-        // return $data;
+        $querry = $request->input('search');
+        $data = News::when($querry, function ($q) use ($querry) {
+            return $q->where('title', 'like', "%$querry%");
+        })->paginate(10);
         return view(('dashboard.news.index'), compact('data'));
     }
 
