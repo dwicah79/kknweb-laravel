@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class YouthorganizationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Youth_Organization::with('village')->paginate(10);
-        // return $data;
+        $query = $request->input('search');
+
+        $data = Youth_Organization::when($query, function ($q) use ($query) {
+            return $q->where('name', 'like', "%$query%");
+        })->paginate(10);
+
         return view('dashboard.youth-organization.index', compact('data'));
     }
 
