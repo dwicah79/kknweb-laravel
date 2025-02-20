@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::with('roles')->paginate(10);
-        // return $data;
+        $querry = $request->input('search');
+        $data = User::when($querry, function ($q) use ($querry) {
+            return $q->where('name', 'like', "%$querry%");
+        })->paginate(10);
         return view('dashboard.user-management.index', compact('data'));
     }
 
