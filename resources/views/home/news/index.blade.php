@@ -41,7 +41,7 @@
                             </div>
                             <div class="mt-4">
                                 <span class="bg-primary-500 text-white text-xs font-bold px-3 py-2 rounded-lg">
-                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($item->add_date)->format('d M Y') }}
                                 </span>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="mt-4">
                                 <span class="bg-primary-500 text-white text-xs font-bold px-3 py-2 rounded-lg">
-                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($item->add_date)->format('d M Y') }}
                                 </span>
                             </div>
                         </div>
