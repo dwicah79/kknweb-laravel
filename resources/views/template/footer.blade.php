@@ -20,11 +20,11 @@
             <div class="space-y-3">
                 <div class="flex items-center gap-2">
 
-                    <span>082150208664</span>
+                    <span>+6285647638871</span>
                 </div>
                 <div class="flex items-center gap-2">
 
-                    <span>kersik.marangkayu@kutarkab.go.id</span>
+                    <span>kretekkarangrejo@gmail.com</span>
                 </div>
                 <div class="flex items-center gap-2">
 
