@@ -36,9 +36,9 @@
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Nama UMKM</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Gambar</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Deskripsi</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Kontak</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Alamat</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Tanggal Dibuat</th>
-                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700">Terakhir Diubah</th>
                         <th class="px-4 py-3 text-center text-xs font-semibold text-gray-700">Aksi</th>
                     </tr>
                 </thead>
@@ -54,12 +54,12 @@
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-800 truncate max-w-xs">
                                 {!! Str::limit($item->description, 50, '...') !!}</td>
+                            <td class="px-4 py-4 text-sm text-gray-800 truncate max-w-xs">
+                                {{ $item->telp }}</td>
                             <td class="px-4 py-4 text-sm text-gray-800">
                                 {{ $item->address }}</td>
                             <td class="px-4 py-4 text-sm text-gray-800">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
-                            <td class="px-4 py-4 text-sm text-gray-800">
-                                {{ \Carbon\Carbon::parse($item->updated_at)->format('d F Y') }}</td>
                             <td class="px-4 py-4 text-center">
                                 <div class="flex justify-center space-x-2">
                                     <a href="{{ route('umkm.edit', $item->id) }}" class="text-blue-300 hover:text-blue-400">
