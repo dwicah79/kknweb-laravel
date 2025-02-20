@@ -11,6 +11,7 @@ use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SpeechController;
 use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CKEditorCOntroller;
 use App\Http\Controllers\DashboardController;
@@ -92,6 +93,13 @@ Route::middleware(['auth', 'role:Super-Admin|Pengurus-Desa|Pengurus-Pemuda|Pengu
     Route::get('/about-website/{id}/edit-slider', [AboutusController::class, 'editslider'])->name('about.slider.edit');
     Route::put('/about-website/{id}/edit-slider', [AboutusController::class, 'updateslider'])->name('about.slider.update');
     Route::delete('/about-website/{id}', [AboutusController::class, 'destroyslider'])->name('about.slider.destroy');
+
+    Route::get('/management-gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('/management-gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/management-gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::get('/management-gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::put('/management-gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('/management-gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 });
 
 //main page
