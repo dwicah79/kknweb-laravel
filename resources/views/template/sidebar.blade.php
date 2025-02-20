@@ -185,8 +185,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('menu-b') ? 'nav-item-active' : '' }}">
+                                <a href="{{ route('speech.index') }}"
+                                    class="block px-4 py-2 hover:bg-gray-200 {{ Request::is('/speechmanagement') ? 'nav-item-active' : '' }}">
                                     Sambutan Kepala Dusun
                                 </a>
                             </li>
