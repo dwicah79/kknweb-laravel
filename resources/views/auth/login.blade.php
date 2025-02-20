@@ -15,14 +15,14 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="px-4 bg-green-50 ">
+<body class="px-4 bg-blue-50 ">
     <div class="relative -z-10">
         <div class="fixed">
             <div class="fixed -top-48 -left-48 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(94, 255, 0, 0.474) 0%, rgba(0, 57, 115, 0) 70%);">
+                style="background: radial-gradient(circle, rgba(24, 138, 204, 0.474) 0%, rgba(0, 57, 115, 0) 70%);">
             </div>
             <div class="fixed -bottom-48 -right-48 w-[500px] h-[500px] rounded-full"
-                style="background: radial-gradient(circle, rgba(94, 255, 0, 0.474) 0%, rgba(0, 57, 115, 0) 70%);">
+                style="background: radial-gradient(circle, rgba(24, 138, 204, 0.474) 0%, rgba(0, 57, 115, 0) 70%);">
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                     @csrf
                     <div class="w-full md:px-20 px-5 py-5 xl:py-16">
                         <div class="md:hidden xl:p-5 overflow-hidden rounded-xl mb-5">
-                            <img src="{{ asset('image/village1.jpg') }}"
+                            <img src="{{ asset('image/people.png') }}"
                                 class="h-24 w-full object-cover overflow-hidden rounded-xl" />
                         </div>
                         <div class="mb-3 flex flex-wrap items-center justify-center md:justify-center space-x-3">
