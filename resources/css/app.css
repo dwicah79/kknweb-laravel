@@ -10,7 +10,7 @@
 
 @layer base {
     .btn-primmary {
-        @apply px-4 py-2 text-sm text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700  dark:hover:text-white rounded-lg transition-all duration-300;
+        @apply px-4 py-2 text-sm text-white bg-gradient-to-r from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700  dark:hover:text-white rounded-lg transition-all duration-300;
     }
 
     .bg-gradient-primmary {
@@ -37,6 +37,14 @@
 
     .nav-item-active {
         @apply text-primary-700 bg-primary-300 uppercase  font-sans font-bold  dark:bg-primary-500;
+    }
+
+    .nav-home {
+        @apply p-2 md:text-lg text-white font-semibold transition hover:text-yellow-300;
+    }
+
+    .nav-home-active {
+        @apply p-2 md:text-lg text-yellow-300 font-semibold transition underline hover:text-white;
     }
 }
 
