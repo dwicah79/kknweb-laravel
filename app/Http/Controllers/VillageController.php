@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class VillageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Village_organization::with('village')->paginate(10);
-        // return $data;
+        $query = $request->input('search');
+
+        $data = Village_organization::when($query, function ($q) use ($query) {
+            return $q->where('name', 'like', "%$query%");
+        })->paginate(10);
+
         return view('dashboard.village-organization.index', compact('data'));
     }
 
