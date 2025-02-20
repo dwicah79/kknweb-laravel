@@ -15,7 +15,7 @@
                             class="w-full md:w-1/2 h-auto mb-4 rounded-lg">
                         <div class="flex flex-col">
                             <h1 class="text-2xl font-bold mb-4">{{ $umkm->name }}</h1>
-                            <div class="prose text-justify">
+                            <div class="prose text-justify text-gray-500">
                                 {!! $umkm->description !!}
                             </div>
                             <div class="flex justify-start mt-3">
@@ -61,7 +61,7 @@
                                         class="w-full h-32 object-cover rounded-lg mb-2">
                                     <h3 class="text-sm font-semibold">{{ Str::limit($recent->name, 50, '...') }}</h3>
                                     <p class="text-xs text-gray-600 mt-1">{{ $recent->created_at->format('d F Y') }}</p>
-                                    <p class="text-sm">
+                                    <p class="text-sm text-gray-600">
                                         {{ Str::limit(strip_tags($recent->description), 100, '...') }}
                                     </p>
                                 </a>
