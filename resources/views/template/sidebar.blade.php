@@ -243,7 +243,7 @@
         </div>
         <div class="px-3 py-3 bg-white mb-10 flex justify-center ">
             <a href="javascript:void(0);"
-                class="items-center space-x-2 gap-2 px-4 py-2 text-sm inline-flex text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg transition duration-300"
+                class="items-center space-x-2 gap-2 px-4 py-2 text-sm inline-flex text-white bg-gradient-to-r from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg transition duration-300"
                 role="menuitem" id="logoutBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
