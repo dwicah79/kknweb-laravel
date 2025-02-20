@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Storage;
 
 class UmkmController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Umkm::paginate(10);
-        return view('dashboard.umkm.index', compact('data'));
+        $query = $request->input('search');
+
+        $data = Umkm::when($query, function ($q) use ($query) {
+            return $q->where('name', 'like', "%$query%");
+        })->paginate(10);
+
+        return view('dashboard.umkm.index', compact('data', 'query'));
     }
+
 
     public function create()
     {
