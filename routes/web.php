@@ -111,6 +111,7 @@ Route::get('/guestumkm', [HomeController::class, 'umkmindex'])->name('home.umkm.
 Route::get('/guestumkm/{id}', [HomeController::class, 'umkmdetile'])->name('home.umkm.detile');
 Route::get('/guestyouth', [HomeController::class, 'youthindex'])->name('home.youth.index');
 Route::get('/guestgallery', [HomeController::class, 'galleryindex'])->name('home.gallery.index');
+Route::get('/guestpkk', [HomeController::class, 'pkkindex'])->name('home.pkk.index');
 Route::get('/loading', function () {
     return view('loading');
 });
