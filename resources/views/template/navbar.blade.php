@@ -35,8 +35,8 @@
             <li><a href="{{ route('home.youth.index') }}"
                     class="nav-home {{ request()->is('guestyouth*') ? 'nav-home-active' : '' }}">Pemuda</a>
             </li>
-            <li><a href="#"
-                    class="nav-home {{ request()->is('organisasi-pkk') ? 'nav-home-active' : '' }}">Organisasi PKK</a>
+            <li><a href="{{ route('home.pkk.index') }}"
+                    class="nav-home {{ request()->is('guestpkk*') ? 'nav-home-active' : '' }}">Organisasi PKK</a>
             </li>
             <li><a href="{{ route('home.news.index') }}"
                     class="nav-home {{ request()->is('guestnews*') ? 'nav-home-active' : '' }}">Berita</a></li>
@@ -54,8 +54,8 @@
                         class="nav-home {{ request()->is('guestumkm*') ? 'nav-home-active' : '' }}">UMKM</a></li>
                 <li><a href="{{ route('home.youth.index') }}"
                         class="nav-home {{ request()->is('guestyouth*') ? 'nav-home-active' : '' }}">Pemuda</a></li>
-                <li><a href="#"
-                        class="nav-home {{ request()->is('organisasi-pkk') ? 'nav-home-active' : '' }}">Organisasi
+                <li><a href="{{ route('home.pkk.index') }}"
+                        class="nav-home {{ request()->is('guestpkk*') ? 'nav-home-active' : '' }}">Organisasi
                         PKK</a></li>
                 <li><a href="{{ route('home.news.index') }}"
                         class="nav-home {{ request()->is('guestnews*') ? 'nav-home-active' : '' }}">Berita</a></li>
