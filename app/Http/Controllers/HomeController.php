@@ -7,6 +7,7 @@ use App\Models\Umkm;
 use App\Models\About;
 use App\Models\Speech;
 use App\Models\Gallery;
+use App\Models\PKK_Organization;
 use Illuminate\Http\Request;
 use App\Models\Youth_Organization;
 use App\Models\Village_organization;
@@ -78,5 +79,11 @@ class HomeController extends Controller
     {
         $gallery = Gallery::orderBy('created_at', 'desc')->paginate(8);
         return view('home.gallery.index', compact('gallery'));
+    }
+
+    public function pkkindex()
+    {
+        $pkk = PKK_Organization::paginate(8);
+        return view('home.PKK.index', compact('pkk'));
     }
 }
