@@ -109,7 +109,7 @@ class YouthorganizationController extends Controller
         $data = Youth_Organization::find($id);
         $data->delete();
 
-        return redirect()->route('village.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('youth-organization.index')->with('success', 'Data berhasil dihapus');
     }
 
 }

@@ -109,6 +109,8 @@ Route::get('/guestnews', [HomeController::class, 'newsindex'])->name('home.news.
 Route::get('/guestnews/{id}', [HomeController::class, 'newsdetile'])->name('home.news.detile');
 Route::get('/guestumkm', [HomeController::class, 'umkmindex'])->name('home.umkm.index');
 Route::get('/guestumkm/{id}', [HomeController::class, 'umkmdetile'])->name('home.umkm.detile');
+Route::get('/guestyouth', [HomeController::class, 'youthindex'])->name('home.youth.index');
+Route::get('/guestgallery', [HomeController::class, 'galleryindex'])->name('home.gallery.index');
 Route::get('/loading', function () {
     return view('loading');
 });

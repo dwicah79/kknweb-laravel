@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Umkm;
 use App\Models\About;
 use App\Models\Speech;
-use App\Models\Umkm;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Models\Youth_Organization;
 use App\Models\Village_organization;
 
 class HomeController extends Controller
@@ -64,5 +66,17 @@ class HomeController extends Controller
         $recentUmkm = Umkm::latest()->take(5)->get();
 
         return view('home.umkm.detile', compact('umkm', 'recentUmkm'));
+    }
+
+    public function youthindex()
+    {
+        $youth = Youth_Organization::paginate(9);
+        return view('home.youth-organization.index', compact('youth'));
+    }
+
+    public function galleryindex()
+    {
+        $gallery = Gallery::orderBy('created_at', 'desc')->paginate(8);
+        return view('home.gallery.index', compact('gallery'));
     }
 }
